@@ -1,0 +1,65 @@
+<%= form_for(@lease) do |f| %>
+  <% if @lease.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lease.errors.count, "error") %> prohibited this lease from being saved:</h2>
+
+      <ul>
+      <% @lease.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :client %><br>
+    <%= f.text_field :client %>
+  </div>
+  <div class="field">
+    <%= f.label :rental_amount %><br>
+    <%= f.text_field :rental_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :move_out %><br>
+    <%= f.text_field :move_out %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.text_field :date %>
+  </div>
+  <div class="field">
+    <%= f.label :move_in %><br>
+    <%= f.date_select :move_in %>
+  </div>
+  <div class="field">
+    <%= f.label :welcome_home %><br>
+    <%= f.check_box :welcome_home %>
+  </div>
+  <div class="field">
+    <%= f.label :thank_you_sent %><br>
+    <%= f.check_box :thank_you_sent %>
+  </div>
+  <div class="field">
+    <%= f.label :dropped_date %><br>
+    <%= f.date_select :dropped_date %>
+  </div>
+  <div class="field">
+    <%= f.label :comments %><br>
+    <%= f.text_area :comments %>
+  </div>
+  <div class="field">
+    <%= f.label :agent_references %><br>
+    <%= f.text_field :agent_references %>
+  </div>
+  <div class="field">
+    <%= f.label :referral_amount %><br>
+    <%= f.text_field :referral_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :property %><br>
+    <%= f.text_field :property %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

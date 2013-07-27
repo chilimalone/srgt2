@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  individual_id: 
+  leased_signed: 2013-07-27
+  lease_expired: 2013-07-27
+  property_id: 
+  room_id: 
+
+two:
+  individual_id: 
+  leased_signed: 2013-07-27
+  lease_expired: 2013-07-27
+  property_id: 
+  room_id: 

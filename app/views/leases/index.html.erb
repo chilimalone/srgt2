@@ -1,0 +1,49 @@
+<h1>Listing leases</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Client</th>
+      <th>Rental amount</th>
+      <th>Move out</th>
+      <th>Date</th>
+      <th>Move in</th>
+      <th>Welcome home</th>
+      <th>Thank you sent</th>
+      <th>Dropped date</th>
+      <th>Comments</th>
+      <th>Agent references</th>
+      <th>Referral amount</th>
+      <th>Property</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @leases.each do |lease| %>
+      <tr>
+        <td><%= lease.client %></td>
+        <td><%= lease.rental_amount %></td>
+        <td><%= lease.move_out %></td>
+        <td><%= lease.date %></td>
+        <td><%= lease.move_in %></td>
+        <td><%= lease.welcome_home %></td>
+        <td><%= lease.thank_you_sent %></td>
+        <td><%= lease.dropped_date %></td>
+        <td><%= lease.comments %></td>
+        <td><%= lease.agent_references %></td>
+        <td><%= lease.referral_amount %></td>
+        <td><%= lease.property %></td>
+        <td><%= link_to 'Show', lease %></td>
+        <td><%= link_to 'Edit', edit_lease_path(lease) %></td>
+        <td><%= link_to 'Destroy', lease, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lease', new_lease_path %>

@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fname:</strong>
+  <%= @individual.fname %>
+</p>
+
+<p>
+  <strong>Lname:</strong>
+  <%= @individual.lname %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @individual.phone %>
+</p>
+
+<p>
+  <strong>Street 1:</strong>
+  <%= @individual.street_1 %>
+</p>
+
+<p>
+  <strong>Street 2:</strong>
+  <%= @individual.street_2 %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @individual.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @individual.state %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @individual.zip %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @individual.email %>
+</p>
+
+<%= link_to 'Edit', edit_individual_path(@individual) %> |
+<%= link_to 'Back', individuals_path %>

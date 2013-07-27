@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  agent_id: 
+  client_id: 
+  date: 2013-07-27
+  room_id: 
+  comments: MyText
+  property_id: 
+
+two:
+  agent_id: 
+  client_id: 
+  date: 2013-07-27
+  room_id: 
+  comments: MyText
+  property_id: 

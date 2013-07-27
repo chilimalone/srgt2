@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @lease.client %>
+</p>
+
+<p>
+  <strong>Rental amount:</strong>
+  <%= @lease.rental_amount %>
+</p>
+
+<p>
+  <strong>Move out:</strong>
+  <%= @lease.move_out %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @lease.date %>
+</p>
+
+<p>
+  <strong>Move in:</strong>
+  <%= @lease.move_in %>
+</p>
+
+<p>
+  <strong>Welcome home:</strong>
+  <%= @lease.welcome_home %>
+</p>
+
+<p>
+  <strong>Thank you sent:</strong>
+  <%= @lease.thank_you_sent %>
+</p>
+
+<p>
+  <strong>Dropped date:</strong>
+  <%= @lease.dropped_date %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @lease.comments %>
+</p>
+
+<p>
+  <strong>Agent references:</strong>
+  <%= @lease.agent_references %>
+</p>
+
+<p>
+  <strong>Referral amount:</strong>
+  <%= @lease.referral_amount %>
+</p>
+
+<p>
+  <strong>Property:</strong>
+  <%= @lease.property %>
+</p>
+
+<%= link_to 'Edit', edit_lease_path(@lease) %> |
+<%= link_to 'Back', leases_path %>

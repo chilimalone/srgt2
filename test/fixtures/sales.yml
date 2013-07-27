@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  agent_id: 
+  hear: false
+  individual_id: 
+  property_id: 
+  closing_date: 2013-07-25
+  company: MyString
+  office_number: MyString
+
+two:
+  agent_id: 
+  hear: false
+  individual_id: 
+  property_id: 
+  closing_date: 2013-07-25
+  company: MyString
+  office_number: MyString

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fname:</strong>
+  <%= @agent.fname %>
+</p>
+
+<p>
+  <strong>Lname:</strong>
+  <%= @agent.lname %>
+</p>
+
+<%= link_to 'Edit', edit_agent_path(@agent) %> |
+<%= link_to 'Back', agents_path %>

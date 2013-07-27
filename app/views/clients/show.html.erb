@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @client.comments %>
+</p>
+
+<p>
+  <strong>File number:</strong>
+  <%= @client.file_number %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @client.source %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @client.company %>
+</p>
+
+<p>
+  <strong>Date received:</strong>
+  <%= @client.date_received %>
+</p>
+
+<p>
+  <strong>Confirmed:</strong>
+  <%= @client.confirmed %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @client.comments %>
+</p>
+
+<p>
+  <strong>Individual:</strong>
+  <%= @client.individual %>
+</p>
+
+<%= link_to 'Edit', edit_client_path(@client) %> |
+<%= link_to 'Back', clients_path %>

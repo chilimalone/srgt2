@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  comments: MyText
+  file_number: MyString
+  source: MyText
+  company: MyString
+  date_received: 2013-07-25
+  confirmed: false
+  comments: MyText
+  individual_id: 
+
+two:
+  comments: MyText
+  file_number: MyString
+  source: MyText
+  company: MyString
+  date_received: 2013-07-25
+  confirmed: false
+  comments: MyText
+  individual_id: 

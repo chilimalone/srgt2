@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Individual:</strong>
+  <%= @tenent.individual %>
+</p>
+
+<p>
+  <strong>Leased signed:</strong>
+  <%= @tenent.leased_signed %>
+</p>
+
+<p>
+  <strong>Lease expired:</strong>
+  <%= @tenent.lease_expired %>
+</p>
+
+<p>
+  <strong>Property:</strong>
+  <%= @tenent.property %>
+</p>
+
+<p>
+  <strong>Room:</strong>
+  <%= @tenent.room %>
+</p>
+
+<%= link_to 'Edit', edit_tenent_path(@tenent) %> |
+<%= link_to 'Back', tenents_path %>

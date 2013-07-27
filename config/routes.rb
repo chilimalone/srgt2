@@ -1,4 +1,22 @@
 Srgt2::Application.routes.draw do
+  resources :leases
+
+  resources :tours
+
+  resources :tenents
+
+  resources :rooms
+
+  resources :sales
+
+  resources :properties
+
+  resources :agents
+
+  resources :clients
+
+  resources :individuals
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

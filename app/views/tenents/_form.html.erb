@@ -1,0 +1,37 @@
+<%= form_for(@tenent) do |f| %>
+  <% if @tenent.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tenent.errors.count, "error") %> prohibited this tenent from being saved:</h2>
+
+      <ul>
+      <% @tenent.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :individual %><br>
+    <%= f.text_field :individual %>
+  </div>
+  <div class="field">
+    <%= f.label :leased_signed %><br>
+    <%= f.date_select :leased_signed %>
+  </div>
+  <div class="field">
+    <%= f.label :lease_expired %><br>
+    <%= f.date_select :lease_expired %>
+  </div>
+  <div class="field">
+    <%= f.label :property %><br>
+    <%= f.text_field :property %>
+  </div>
+  <div class="field">
+    <%= f.label :room %><br>
+    <%= f.text_field :room %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

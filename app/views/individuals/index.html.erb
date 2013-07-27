@@ -1,0 +1,43 @@
+<h1>Listing individuals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fname</th>
+      <th>Lname</th>
+      <th>Phone</th>
+      <th>Street 1</th>
+      <th>Street 2</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Email</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @individuals.each do |individual| %>
+      <tr>
+        <td><%= individual.fname %></td>
+        <td><%= individual.lname %></td>
+        <td><%= individual.phone %></td>
+        <td><%= individual.street_1 %></td>
+        <td><%= individual.street_2 %></td>
+        <td><%= individual.city %></td>
+        <td><%= individual.state %></td>
+        <td><%= individual.zip %></td>
+        <td><%= individual.email %></td>
+        <td><%= link_to 'Show', individual %></td>
+        <td><%= link_to 'Edit', edit_individual_path(individual) %></td>
+        <td><%= link_to 'Destroy', individual, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Individual', new_individual_path %>

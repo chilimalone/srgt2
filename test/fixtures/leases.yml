@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  client_id: 
+  rental_amount: 9.99
+  move_out: MyString
+  date: MyString
+  move_in: 2013-07-27
+  welcome_home: false
+  thank_you_sent: false
+  dropped_date: 2013-07-27
+  comments: MyText
+  agent_references: MyString
+  referral_amount: 9.99
+  property_id: 
+
+two:
+  client_id: 
+  rental_amount: 9.99
+  move_out: MyString
+  date: MyString
+  move_in: 2013-07-27
+  welcome_home: false
+  thank_you_sent: false
+  dropped_date: 2013-07-27
+  comments: MyText
+  agent_references: MyString
+  referral_amount: 9.99
+  property_id: 
