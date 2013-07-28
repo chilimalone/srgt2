@@ -11,27 +11,21 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :individual %><br>
-    <%= f.text_field :individual %>
-  </div>
-  <div class="field">
-    <%= f.label :leased_signed %><br>
+  <br />
+    <%= f.label :individual %>
+    <%= f.collection_select(:individual_id, Individual.all, :id, :fname) %>
+  <br />
+    <%= f.label :leased_signed %>
     <%= f.date_select :leased_signed %>
-  </div>
-  <div class="field">
-    <%= f.label :lease_expired %><br>
+  <br />
+    <%= f.label :lease_expired %>
     <%= f.date_select :lease_expired %>
-  </div>
-  <div class="field">
-    <%= f.label :property %><br>
-    <%= f.text_field :property %>
-  </div>
-  <div class="field">
-    <%= f.label :room %><br>
-    <%= f.text_field :room %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <br />
+    <%= f.label :property %>
+    <%= f.collection_select(:property_id, Property.all, :id, :street_1) %>
+  <br />
+    <%= f.label :room %>
+    <%= f.collection_select(:room_id, Room.all, :id, :room_number) %>
+  <br />
+    <%= f.submit "Save", class: "submit" %>
 <% end %>

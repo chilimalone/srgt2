@@ -11,15 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <br />
     <%= f.label :fname, "First Name: " %>
     <%= f.text_field :fname %>
-  </div>
-  <div class="field">
+  <br />
     <%= f.label :lname, "Last Name:" %>
     <%= f.text_field :lname %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <br />
+    <%= f.submit "Save", class: "submit" %>
   </div>
 <% end %>

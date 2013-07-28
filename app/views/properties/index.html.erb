@@ -1,4 +1,4 @@
-<h1>Listing properties</h1>
+<h2>Listing properties</h2>
 
 <table>
   <thead>
@@ -25,7 +25,7 @@
         <td><%= property.state %></td>
         <td><%= property.zip %></td>
         <td><%= property.notes %></td>
-        <td><%= property.individual %></td>
+        <td><%= link_to 'Edit Individual', edit_individual_path(property.individual) %></td>
         <td><%= link_to 'Show', property %></td>
         <td><%= link_to 'Edit', edit_property_path(property) %></td>
         <td><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>

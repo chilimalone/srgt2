@@ -11,31 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :agent %><br>
-    <%= f.text_field :agent %>
-  </div>
-  <div class="field">
-    <%= f.label :client %><br>
-    <%= f.text_field :client %>
-  </div>
-  <div class="field">
-    <%= f.label :date %><br>
+  <br />
+    <%= f.label :agent, "Agent" %>
+    <%= f.collection_select(:agent_id, Agent.all, :id, :fname) %>
+  <br />
+    <%= f.label :client %>
+    <%= f.collection_select(:client_id, Individual.all, :id, :fname) %>
+  <br />
+    <%= f.label :date %>
     <%= f.date_select :date %>
-  </div>
-  <div class="field">
-    <%= f.label :room %><br>
-    <%= f.text_field :room %>
-  </div>
-  <div class="field">
-    <%= f.label :comments %><br>
+  <br />
+    <%= f.label :property %>
+    <%= f.collection_select(:property_id, Property.all, :id, :street_1) %>
+  <br />
+    <%= f.label :room %>
+    <%= f.collection_select(:room_id, Room.all, :id, :room_number) %>
+  <br />
+    <%= f.label :comments %>
     <%= f.text_area :comments %>
-  </div>
-  <div class="field">
-    <%= f.label :property %><br>
-    <%= f.text_field :property %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <br />
+    <%= f.submit "Save", class: "submit" %>
   </div>
 <% end %>

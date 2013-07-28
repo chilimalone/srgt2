@@ -1,4 +1,4 @@
-<h1>Listing clients</h1>
+<h2>Listing clients</h2>
 
 <table>
   <thead>
@@ -9,8 +9,8 @@
       <th>Company</th>
       <th>Date received</th>
       <th>Confirmed</th>
-      <th>Comments</th>
       <th>Individual</th>
+      <th>Comments</th>
       <th></th>
       <th></th>
       <th></th>
@@ -26,8 +26,8 @@
         <td><%= client.company %></td>
         <td><%= client.date_received %></td>
         <td><%= client.confirmed %></td>
-        <td><%= client.comments %></td>
         <td><%= client.individual %></td>
+        <td><%= client.comments %></td>
         <td><%= link_to 'Show', client %></td>
         <td><%= link_to 'Edit', edit_client_path(client) %></td>
         <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>

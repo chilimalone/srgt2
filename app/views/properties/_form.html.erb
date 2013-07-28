@@ -10,36 +10,27 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :street_1 %><br>
+  <br />
+    <%= f.label :individual, "Owner: " %>
+    <%= f.collection_select(:individual_id, Individual.all, :id, :fname) %>
+  <br />
+    <%= f.label :street_1, "Street 1: " %>
     <%= f.text_field :street_1 %>
-  </div>
-  <div class="field">
-    <%= f.label :street_2 %><br>
+  <br />
+    <%= f.label :street_2, "Street 2: " %>
     <%= f.text_field :street_2 %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br>
+  <br />
+    <%= f.label :city, "City: " %>
     <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :state %><br>
+  <br />
+    <%= f.label :state, "State: " %>
     <%= f.text_field :state %>
-  </div>
-  <div class="field">
-    <%= f.label :zip %><br>
+  <br />
+    <%= f.label :zip, "Zip code: " %>
     <%= f.text_field :zip %>
-  </div>
-  <div class="field">
-    <%= f.label :notes %><br>
+  <br />
+    <%= f.label :notes, "Notes" %>
     <%= f.text_area :notes %>
-  </div>
-  <div class="field">
-    <%= f.label :individual %><br>
-    <%= f.text_field :individual %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <br />
+    <%= f.submit "Save", class: "submit" %>
 <% end %>

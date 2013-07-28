@@ -35,18 +35,17 @@
     <%= f.label :dropped_date %>
     <%= f.date_select :dropped_date %>
   <br />
-    <%= f.label :comments %>
-    <%= f.text_area :comments %>
-  <br />
-    <%= f.label :agent_references %>
-    <%= f.text_field :agent_references %>
+    <%= f.label :agent %>
+    <%= f.collection_select(:agent_id, Agent.all, :id, :fname) %>
   <br />
     <%= f.label :referral_amount %>
     <%= f.text_field :referral_amount %>
-  
-  <div class="field">
+  <br />
     <%= f.label :property, "Property:" %>
    	<%= f.collection_select(:property_id, Property.all, :id, :street_1)%>
+  <br />
+    <%= f.label :comments %>
+    <%= f.text_area :comments %>
   <br />
     <%= f.submit "Save", class: "submit" %>
 <% end %>

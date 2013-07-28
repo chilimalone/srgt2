@@ -11,15 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :property %><br>
-    <%= f.text_field :property %>
-  </div>
-  <div class="field">
-    <%= f.label :comments %><br>
+  <br />
+    <%= f.label :property, "Property: " %>
+    <%= f.collection_select(:property_id, Property.all, :id, :street_1) %>
+  <br />
+	<%= f.label :room_number, "Room Number: " %>
+	<%= f.text_field :room_number %>
+  <br />
+    <%= f.label :comments %>
     <%= f.text_area :comments %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <br />
+    <%= f.submit "Save", class: "submit" %>
 <% end %>

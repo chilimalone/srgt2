@@ -1,4 +1,4 @@
-<h1>Listing leases</h1>
+<h2>Listing leases</h2>
 
 <table>
   <thead>
@@ -11,10 +11,10 @@
       <th>Welcome home</th>
       <th>Thank you sent</th>
       <th>Dropped date</th>
-      <th>Comments</th>
-      <th>Agent references</th>
+      <th>Agent</th>
       <th>Referral amount</th>
       <th>Property</th>
+      <th>Comments</th>
       <th></th>
       <th></th>
       <th></th>
@@ -32,10 +32,10 @@
         <td><%= lease.welcome_home %></td>
         <td><%= lease.thank_you_sent %></td>
         <td><%= lease.dropped_date %></td>
-        <td><%= lease.comments %></td>
-        <td><%= lease.agent_references %></td>
+        <td><%= lease.agent %></td>
         <td><%= lease.referral_amount %></td>
         <td><%= lease.property %></td>
+        <td><%= lease.comments %></td>
         <td><%= link_to 'Show', lease %></td>
         <td><%= link_to 'Edit', edit_lease_path(lease) %></td>
         <td><%= link_to 'Destroy', lease, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130728035546) do
+ActiveRecord::Schema.define(version: 20130728045322) do
 
   create_table "agents", force: true do |t|
     t.string   "fname"
@@ -59,13 +59,14 @@ ActiveRecord::Schema.define(version: 20130728035546) do
     t.boolean  "thank_you_sent"
     t.date     "dropped_date"
     t.text     "comments"
-    t.string   "agent_references"
     t.decimal  "referral_amount"
     t.integer  "property_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "agent_id"
   end
 
+  add_index "leases", ["agent_id"], name: "index_leases_on_agent_id"
   add_index "leases", ["client_id"], name: "index_leases_on_client_id"
   add_index "leases", ["property_id"], name: "index_leases_on_property_id"
 
@@ -88,6 +89,7 @@ ActiveRecord::Schema.define(version: 20130728035546) do
     t.text     "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "room_number"
   end
 
   add_index "rooms", ["property_id"], name: "index_rooms_on_property_id"

@@ -1,9 +1,10 @@
-<h1>Listing rooms</h1>
+<h2>Listing rooms</h2>
 
 <table>
   <thead>
     <tr>
       <th>Property</th>
+	  <th>Room Number</th>
       <th>Comments</th>
       <th></th>
       <th></th>
@@ -15,6 +16,7 @@
     <% @rooms.each do |room| %>
       <tr>
         <td><%= room.property %></td>
+		<td><%= room.room_number %></td>
         <td><%= room.comments %></td>
         <td><%= link_to 'Show', room %></td>
         <td><%= link_to 'Edit', edit_room_path(room) %></td>

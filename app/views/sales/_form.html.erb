@@ -11,35 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :agent %><br>
-    <%= f.text_field :agent %>
-  </div>
-  <div class="field">
-    <%= f.label :hear %><br>
+  <br />
+    <%= f.label :agent, "Agent: " %>
+    <%= f.collection_select(:agent_id, Agent.all, :id, :fname) %>
+  <br />
+    <%= f.label :hear %>
     <%= f.check_box :hear %>
-  </div>
-  <div class="field">
-    <%= f.label :individual %><br>
-    <%= f.text_field :individual %>
-  </div>
-  <div class="field">
+  <br />
+    <%= f.label :buyer, "Buyer: " %>
+    <%= f.collection_select(:buyer_id, Individual.all, :id, :fname) %>
+  <br />
     <%= f.label :property %><br>
-    <%= f.text_field :property %>
-  </div>
-  <div class="field">
-    <%= f.label :closing_date %><br>
+    <%= f.collection_select(:property_id, Property.all, :id, :street_1) %>
+  <br />
+    <%= f.label :closing_date %>
     <%= f.date_select :closing_date %>
-  </div>
-  <div class="field">
+  <br />
     <%= f.label :company %><br>
     <%= f.text_field :company %>
-  </div>
-  <div class="field">
+  <br />
     <%= f.label :office_number %><br>
     <%= f.text_field :office_number %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <br />
+    <%= f.submit "Save", class: "submit" %>
 <% end %>

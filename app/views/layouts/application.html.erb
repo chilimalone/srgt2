@@ -37,10 +37,10 @@
 						<li><%= link_to "Search", clients_path %></li>
 					</ul>
 				</li>
-				<li><%= link_to "TENANTS", tenents_path %></a>
+				<li><%= link_to "TENANTS", tenants_path %></a>
 					<ul>
-						<li><%= link_to "New Tenant", new_tenent_path %></li>
-						<li><%= link_to "Search", tenents_path %></li>
+						<li><%= link_to "New Tenant", new_tenant_path %></li>
+						<li><%= link_to "Search", tenants_path %></li>
 					</ul>
 				</li>
 				<li><%= link_to "OWNERS", individuals_path %>
@@ -58,7 +58,11 @@
 			</ul>
 		</div>
 		<div id="banner">
-			<%= image_tag "banner3.jpg", :class => "auto-style1" %>
+			<% if content_for?(:banner) %>
+				<%= yield :banner %>
+			<% else %>
+				<%= image_tag "about_us_900x100.png", :class => "auto-style1" %>
+			<% end %>
 		</div>
 		<div id="subbanner">
 			<h1>Welcome to SRG Internal Listings Database</h1>
