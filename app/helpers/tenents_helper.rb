@@ -1,2 +1,0 @@
-module TenentsHelper
-end

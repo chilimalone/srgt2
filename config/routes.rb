@@ -1,9 +1,10 @@
 Srgt2::Application.routes.draw do
+  root :to => 'home#index'
   resources :leases
 
   resources :tours
 
-  resources :tenents
+  resources :tenants
 
   resources :rooms
 

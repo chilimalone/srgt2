@@ -1,4 +1,4 @@
-class Tenent < ActiveRecord::Base
+class Tenant < ActiveRecord::Base
   belongs_to :individual
   belongs_to :property
   belongs_to :room

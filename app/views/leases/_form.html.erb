@@ -10,56 +10,43 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :client %><br>
-    <%= f.text_field :client %>
-  </div>
-  <div class="field">
-    <%= f.label :rental_amount %><br>
+	<br />
+    <%= f.label :client %>
+    <%= f.collection_select(:client_id, Client.all, :id, :fname) %>
+	<br />
+    <%= f.label :rental_amount %>
     <%= f.text_field :rental_amount %>
-  </div>
-  <div class="field">
-    <%= f.label :move_out %><br>
+	<br />
+    <%= f.label :move_out %>
     <%= f.text_field :move_out %>
-  </div>
-  <div class="field">
-    <%= f.label :date %><br>
+  <br />
+    <%= f.label :date %>
     <%= f.text_field :date %>
-  </div>
-  <div class="field">
-    <%= f.label :move_in %><br>
+  <br />
+    <%= f.label :move_in %>
     <%= f.date_select :move_in %>
-  </div>
-  <div class="field">
-    <%= f.label :welcome_home %><br>
+  <br />
+    <%= f.label :welcome_home %>
     <%= f.check_box :welcome_home %>
-  </div>
-  <div class="field">
-    <%= f.label :thank_you_sent %><br>
+  <br />
+    <%= f.label :thank_you_sent %>
     <%= f.check_box :thank_you_sent %>
-  </div>
-  <div class="field">
-    <%= f.label :dropped_date %><br>
+  <br />
+    <%= f.label :dropped_date %>
     <%= f.date_select :dropped_date %>
-  </div>
-  <div class="field">
-    <%= f.label :comments %><br>
+  <br />
+    <%= f.label :comments %>
     <%= f.text_area :comments %>
-  </div>
-  <div class="field">
-    <%= f.label :agent_references %><br>
+  <br />
+    <%= f.label :agent_references %>
     <%= f.text_field :agent_references %>
-  </div>
-  <div class="field">
-    <%= f.label :referral_amount %><br>
+  <br />
+    <%= f.label :referral_amount %>
     <%= f.text_field :referral_amount %>
-  </div>
+  
   <div class="field">
-    <%= f.label :property %><br>
-    <%= f.text_field :property %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.label :property, "Property:" %>
+   	<%= f.collection_select(:property_id, Property.all, :id, :street_1)%>
+  <br />
+    <%= f.submit "Save", class: "submit" %>
 <% end %>

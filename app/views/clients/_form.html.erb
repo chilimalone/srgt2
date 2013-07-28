@@ -11,39 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :comments %><br>
-    <%= f.text_area :comments %>
-  </div>
-  <div class="field">
-    <%= f.label :file_number %><br>
-    <%= f.text_field :file_number %>
-  </div>
-  <div class="field">
-    <%= f.label :source %><br>
-    <%= f.text_area :source %>
-  </div>
-  <div class="field">
-    <%= f.label :company %><br>
+	<br />
+    <%= f.label :company, "Company: " %>
     <%= f.text_field :company %>
-  </div>
-  <div class="field">
-    <%= f.label :date_received %><br>
+  	<br />
+    <%= f.label :date_received, "Date Received: " %>
     <%= f.date_select :date_received %>
-  </div>
-  <div class="field">
-    <%= f.label :confirmed %><br>
+	<br />
+    <%= f.label :confirmed, "Confirmed" %>
     <%= f.check_box :confirmed %>
-  </div>
-  <div class="field">
-    <%= f.label :comments %><br>
+	<br />
+    <%= f.label :file_number, "File Number" %>
+    <%= f.text_field :file_number %>
+	<br />
+    <%= f.label :source, "Source" %>
+    <%= f.text_field :source %>
+	<br />
+    <%= f.label :individual, "Client Information" %>
+	<%= f.collection_select(:individual_id, Individual.all, :id, :fname)%>
+	<br />
+    <%= f.label :comments, "Comments" %>
     <%= f.text_area :comments %>
-  </div>
-  <div class="field">
-    <%= f.label :individual %><br>
-    <%= f.text_field :individual %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<br />
+    <%= f.submit "Save", class: "submit" %>
 <% end %>

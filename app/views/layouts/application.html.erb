@@ -1,14 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Srgt2</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <title>SRG Internal Database</title>
+  <%= stylesheet_link_tag    "application", media: "screen", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+	<div id="wrapper">
+		<div id="top">
+			<div id="logo">
+				<%= link_to(image_tag("logo.jpg", :alt => "home image", :title => "Click here to return home"), "/") %>
+			</div>
+			<div id="welcome">
+				<p>Welcome "Agent Name"</p>
+			</div>
+		</div>
+		<div id="topnav">
+			<ul>
+				<li><%= link_to "HOME", "/" %></li>
+				<li><%= link_to "TOURS", tours_path %>
+					<ul>
+						<li><%= link_to "New Tour", new_tour_path %></li>
+						<li><%= link_to "Search", tours_path %></li>
+					</ul>
+				</li>
+				<li><%= link_to "BUILDINGS", properties_path %>
+					<ul>
+						<li><%= link_to "New Building", new_property_path %></li>
+						<li><%= link_to "Search", properties_path %></li>
+					</ul>
+				</li>
+				<li><%= link_to "CLIENTS", clients_path %>
+					<ul>
+						<li><%= link_to "New Client", new_client_path %></li>
+						<li><%= link_to "Search", clients_path %></li>
+					</ul>
+				</li>
+				<li><%= link_to "TENANTS", tenents_path %></a>
+					<ul>
+						<li><%= link_to "New Tenant", new_tenent_path %></li>
+						<li><%= link_to "Search", tenents_path %></li>
+					</ul>
+				</li>
+				<li><%= link_to "OWNERS", individuals_path %>
+					<ul>
+						<li><%= link_to "New Owner", new_individual_path %></li>
+						<li><%= link_to "Search", individuals_path %></li>
+					</ul>
+				</li>
+				<li><%= link_to "LEASES", leases_path %>
+					<ul>
+						<li><%= link_to "New Lease", new_lease_path %></li>
+						<li><%= link_to "Search", leases_path %></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div id="banner">
+			<%= image_tag "banner3.jpg", :class => "auto-style1" %>
+		</div>
+		<div id="subbanner">
+			<h1>Welcome to SRG Internal Listings Database</h1>
+		</div>
+		<div id="leftnav">
+			<%= yield :leftNav %>
+		</div>
+		<div id="subcontent">
+			<%= yield %>
+		</div>
+		<div id="footer">
+			<p>©2012 Copyright Seattle Rental Group.  Web-page Powered by Bits Consulting.</p>
+		</div>
+	</div>
 </body>
 </html>
