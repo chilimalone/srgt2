@@ -13,7 +13,21 @@
 				<%= link_to(image_tag("logo.jpg", :alt => "home image", :title => "Click here to return home"), "/") %>
 			</div>
 			<div id="welcome">
-				<p>Welcome "Agent Name"</p>
+				<% if current_agent %>
+				  <p>Welcome <%= current_agent.fname %> <%= current_agent.lname %></p>
+				  <br />
+				  <%= link_to "Sign Out", agents_logout_path %>
+				<% else %>
+				  <%= form_for(Agent.new, :url => { :controller => 'agents', :action => 'login' }) do |f| %>
+				    <%= f.label :username, "Username: " %>
+				    <%= f.text_field :username %>
+				    <br />
+				    <%= f.label :password, "Password: "%>
+				    <%= f.password_field :password %>
+				    <br />
+				    <%= submit_tag "Login", class: "submit" %>
+				  <% end %>
+				<% end %>
 			</div>
 		</div>
 		<div id="topnav">
@@ -55,6 +69,12 @@
 						<li><%= link_to "Search", leases_path %></li>
 					</ul>
 				</li>
+				<li><%= link_to "SALES", sales_path %>
+					<ul>
+						<li><%= link_to "New Sales", new_sale_path %></li>
+						<li><%= link_to "Search", sales_path %></li>
+					</ul>
+				</li>
 			</ul>
 		</div>
 		<div id="banner">
@@ -74,7 +94,7 @@
 			<%= yield %>
 		</div>
 		<div id="footer">
-			<p>©2012 Copyright Seattle Rental Group.  Web-page Powered by Bits Consulting.</p>
+			<p>©2012 Copyright Seattle Rental Group.  Designed by <%= mail_to "info@bitsconsulting.org", "Bits Consulting" %>. Created by <%= mail_to "chili@alumni.cmu.edu", "Cathy Li" %>.</p>
 		</div>
 	</div>
 </body>

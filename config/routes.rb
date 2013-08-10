@@ -12,6 +12,9 @@ Srgt2::Application.routes.draw do
 
   resources :properties
 
+  get '/agents/login', to: 'agents#new'
+  post '/agents/login', to: 'agents#login'
+  get '/agents/logout', to: 'agents#logout'
   resources :agents
 
   resources :clients

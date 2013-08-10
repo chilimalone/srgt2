@@ -19,18 +19,18 @@
     <%= f.check_box :hear %>
   <br />
     <%= f.label :buyer, "Buyer: " %>
-    <%= f.collection_select(:buyer_id, Individual.all, :id, :fname) %>
+    <%= f.collection_select(:individual_id, Individual.all, :id, :fname) %>
   <br />
-    <%= f.label :property %><br>
+    <%= f.label :property %>
     <%= f.collection_select(:property_id, Property.all, :id, :street_1) %>
   <br />
     <%= f.label :closing_date %>
     <%= f.date_select :closing_date %>
   <br />
-    <%= f.label :company %><br>
+    <%= f.label :company %>
     <%= f.text_field :company %>
   <br />
-    <%= f.label :office_number %><br>
+    <%= f.label :office_number %>
     <%= f.text_field :office_number %>
   <br />
     <%= f.submit "Save", class: "submit" %>

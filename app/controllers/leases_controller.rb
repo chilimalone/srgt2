@@ -69,6 +69,6 @@ class LeasesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lease_params
-      params.require(:lease).permit(:client_id, :rental_amount, :move_out, :date, :move_in, :welcome_home, :thank_you_sent, :dropped_date, :comments, :agent_references, :referral_amount, :property_id)
+      params.require(:lease).permit(:client_id, :rental_amount, :move_out, :date, :move_in, :welcome_home, :thank_you_sent, :dropped_date, :comments, :agent_id, :referral_amount, :property_id)
     end
 end

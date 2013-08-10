@@ -20,6 +20,24 @@ class AgentsController < ApplicationController
   # GET /agents/1/edit
   def edit
   end
+  
+  # Log in
+  def login
+    username = params[:agent][:username]
+    password = params[:agent][:password]
+    user = Agent.authenticate(username, password)
+    
+    if user
+      session[:currentAgentId] = user.id
+    end
+    redirect_to root_path
+  end
+  
+  # Log out
+  def logout
+    reset_session
+    redirect_to root_path
+  end
 
   # POST /agents
   # POST /agents.json
@@ -69,6 +87,6 @@ class AgentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def agent_params
-      params.require(:agent).permit(:fname, :lname)
+      params.require(:agent).permit(:fname, :lname, :username, :password, :password_confirmation)
     end
 end

@@ -5,6 +5,7 @@
     <tr>
       <th>First Name</th>
       <th>Last Name</th>
+	  <th>Username</th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,6 +17,7 @@
       <tr>
         <td><%= agent.fname %></td>
         <td><%= agent.lname %></td>
+		<td><%= agent.username %></td>
         <td><%= link_to 'Show', agent %></td>
         <td><%= link_to 'Edit', edit_agent_path(agent) %></td>
         <td><%= link_to 'Destroy', agent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
