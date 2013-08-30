@@ -3,8 +3,6 @@ class Agent < ActiveRecord::Base
   before_save :encrypt_password, :standardize
   
   validates_confirmation_of :password
-  #validates_presence_of :password, :on => create
-  #validates_presence_of :username
   validates_uniqueness_of :username
   
   def self.authenticate(username, password)
@@ -16,8 +14,17 @@ class Agent < ActiveRecord::Base
     end
   end
   
-  def self.search(username)
-    
+  def self.search_by_name(name)
+    name_condition = "%" + name + "%"
+    find(:all, :conditions => ['username LIKE ? OR fname LIKE ? OR lname LIKE', name_condition, name_condition, name_condition])
+  end
+  
+  def search
+    scope = Agent.scoped({})
+    scope = scope.scoped :conditions => ["username LIKE ?", "%" + username + "%"] unless username.blank?
+    scope = scope.scoped :conditions => ["fname LIKE ?", "%" + fname + "%"] unless fname.blank?
+    scope = scope.scoped :conditions => ["lname LIKE ?", "%" + lname + "%"] unless lname.blank?
+    scope
   end
   
   private

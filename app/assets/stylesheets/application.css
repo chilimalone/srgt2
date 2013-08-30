@@ -335,6 +335,11 @@ code, pre        { background-color:#FF9; padding:2px 0px; margin:4px 25px; font
     -ms-user-select:none;
     user-select:none;
 }
+
+.fixedNav {
+	position: fixed;
+	float: left;
+}
 #searchnav a:hover {
     background: #356094;
     border: solid 1px #2A4E77;

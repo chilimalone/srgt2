@@ -29,3 +29,7 @@
 <br>
 
 <%= link_to 'New Agent', new_agent_path %>
+
+<%= content_for :search do %>
+<%= render 'search' %>
+<% end %>

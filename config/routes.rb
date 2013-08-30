@@ -15,6 +15,8 @@ Srgt2::Application.routes.draw do
   get '/agents/login', to: 'agents#new'
   post '/agents/login', to: 'agents#login'
   get '/agents/logout', to: 'agents#logout'
+  get '/agents/search', to: 'agents#new'
+  post '/agents/search', to: 'agents#search'
   resources :agents
 
   resources :clients
