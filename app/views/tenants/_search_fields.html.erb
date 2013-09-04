@@ -1,0 +1,17 @@
+  <%= f.label :leased_signed, "Lease Signed: " %>
+  <%= f.date_select :leased_signed, :include_blank => true %>
+<br />
+  <%= f.label :lease_expired, "Lease Expired: " %>
+  <%= f.date_select :lease_expired, :include_blank => true %>
+<br />
+<hr />
+Contact filter <br />
+  <%= f.fields_for :individual do |ind| %>
+	<%= render :partial => '/individuals/fields', :locals => { :f => ind } %>
+  <% end %>
+<br />
+<hr />
+Room filter <br />
+  <%= f.fields_for :room do |ind| %>
+	<%= render :partial => '/rooms/search_fields', :locals => { :f => ind } %>
+  <% end %>

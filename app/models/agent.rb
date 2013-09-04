@@ -16,7 +16,7 @@ class Agent < ActiveRecord::Base
   end
   
   def self.search_by_name(name)
-    name_condition = "%" + name + "%"
+    name_condition = name + "%"
     find(:all, :conditions => ['username LIKE ? OR fname LIKE ? OR lname LIKE', name_condition, name_condition, name_condition])
   end
   
@@ -26,9 +26,9 @@ class Agent < ActiveRecord::Base
   
   def search
     scope = Agent.scoped({})
-    scope = scope.scoped :conditions => ["username LIKE ?", "%" + username + "%"] unless username.blank?
-    scope = scope.scoped :conditions => ["fname LIKE ?", "%" + fname + "%"] unless fname.blank?
-    scope = scope.scoped :conditions => ["lname LIKE ?", "%" + lname + "%"] unless lname.blank?
+    scope = scope.scoped :conditions => ["username LIKE ?", username + "%"] unless username.blank?
+    scope = scope.scoped :conditions => ["fname LIKE ?", fname + "%"] unless fname.blank?
+    scope = scope.scoped :conditions => ["lname LIKE ?", lname + "%"] unless lname.blank?
     scope
   end
   

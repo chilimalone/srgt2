@@ -31,8 +31,8 @@
 </p>
 
 <p>
-  <strong>Individual:</strong>
-  <%= @property.individual %>
+  <strong>Owner Contact:</strong>
+  <%= link_to "#{@property.individual.name}", individual_path(@property.individual) %>
 </p>
 
 <%= link_to 'Edit', edit_property_path(@property) %> |

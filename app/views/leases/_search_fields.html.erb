@@ -1,0 +1,45 @@
+<br />
+  <%= f.label :rental_amount, "Rental Amount: " %>
+  <%= f.text_field :rental_amount %>
+<br />
+  <%= f.label :move_in, "Move in date:" %>
+  <%= f.date_select :move_in, :include_blank => true %>
+<br />
+  <%= f.label :move_out, "Move out date: " %>
+  <%= f.text_field :move_out, :include_blank => true %>
+<br />
+  <%= f.label :date, "Date: " %>
+  <%= f.text_field :date, :include_blank => true %>
+<br />
+  <%= f.label :welcome_home, "Welcome Home: " %>
+  <%= f.check_box :welcome_home %>
+<br />
+  <%= f.label :thank_you_sent, "Thank you sent: " %>
+  <%= f.check_box :thank_you_sent %>
+<br />
+  <%= f.label :dropped_date, "Dropped date: " %>
+  <%= f.date_select :dropped_date, :include_blank => true %>
+<br />
+  <%= f.label :referral_amount, "Referral Amount: " %>
+  <%= f.text_field :referral_amount %>
+<br />
+  <%= f.label :comments %>
+  <%= f.text_area :comments %>
+<br />
+<hr />
+Client filter: <br />
+	<%= f.fields_for :client do |cl| %>
+	  <%= render :partial => '/clients/search_fields', :locals => { :f => cl } %>
+	<% end %>
+<br />
+<hr />
+Agent filter: <br />
+  <%= f.fields_for :agent do |ag| %>
+    <%= render :partial => '/agents/search_fields', :locals => { :f => ag } %>
+  <% end %>
+<br />
+<hr />
+Property filter: <br />
+  <%= f.fields_for :property do |pr| %>
+ 	<%= render :partial => '/properties/search_fields', :locals => { :f => pr } %>
+  <% end %>

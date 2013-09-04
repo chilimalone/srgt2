@@ -2,7 +2,7 @@
 
 <p>
   <strong>Agent:</strong>
-  <%= @sale.agent %>
+  <%= link_to "#{@sale.agent.name}", agent_path(@sale.agent) %>
 </p>
 
 <p>
@@ -12,17 +12,17 @@
 
 <p>
   <strong>Buyer:</strong>
-  <%= @sale.buyer %>
+  <%= link_to "#{@sale.buyer.name}", individual_path(@sale.buyer) %>
 </p>
 
 <p>
   <strong>Broker:</strong>
-  <%= @sale.broker %>
+  <%= link_to "#{@sale.broker.name}", individual_path(@sale.broker) %>
 </p>
 
 <p>
   <strong>Property:</strong>
-  <%= @sale.property %>
+  <%= link_to "#{@sale.property.address}", property_path(@sale.property) %>
 </p>
 
 <p>

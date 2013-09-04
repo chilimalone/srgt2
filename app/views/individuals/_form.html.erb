@@ -12,32 +12,7 @@
   <% end %>
 
   <br />
-    <%= f.label :fname, "First Name:" %>
-    <%= f.text_field :fname %>
-  <br />
-    <%= f.label :lname, "Last Name:" %>
-    <%= f.text_field :lname %>
-  <br />
-    <%= f.label :phone, "Phone Number:" %>
-    <%= f.text_field :phone %>
-  <br />
-    <%= f.label :street_1, "Street address 1:" %>
-    <%= f.text_field :street_1 %>
-  <br />
-    <%= f.label :street_2, "Street address 2:" %>
-    <%= f.text_field :street_2 %>
-  <br />
-    <%= f.label :city, "City: " %>
-    <%= f.text_field :city %>
-  <br />
-    <%= f.label :state, "State: " %>
-    <%= f.text_field :state %>
-  <br />
-    <%= f.label :zip, "Zip code: " %>
-    <%= f.text_field :zip %>
-  <br />
-    <%= f.label :email, "E-mail: " %>
-    <%= f.text_field :email %>
+  <%= render :partial => 'fields', :locals => { :f => f } %>
   <br />
     <%= f.submit "Save", class: "submit" %>
 <% end %>

@@ -2,12 +2,12 @@
 
 <p>
   <strong>Agent:</strong>
-  <%= @tour.agent %>
+  <%= link_to "#{@sale.agent.name}", agent_path(@sale.agent) %>
 </p>
 
 <p>
   <strong>Client:</strong>
-  <%= @tour.client %>
+  <%= link_to "#{@tour.client.name}", client_path(@tour.client) %>
 </p>
 
 <p>
@@ -17,17 +17,17 @@
 
 <p>
   <strong>Room:</strong>
-  <%= @tour.room %>
+  <%= link_to "#{@tour.room.room_number}", room_path(@tour.room) %>
+</p>
+
+<p>
+  <strong>Property:</strong>
+  <%= link_to "#{@tour.property.address}", property_path(@tour.property) %>
 </p>
 
 <p>
   <strong>Comments:</strong>
   <%= @tour.comments %>
-</p>
-
-<p>
-  <strong>Property:</strong>
-  <%= @tour.property %>
 </p>
 
 <%= link_to 'Edit', edit_tour_path(@tour) %> |

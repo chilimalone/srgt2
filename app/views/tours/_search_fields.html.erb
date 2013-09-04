@@ -1,0 +1,23 @@
+  <%= f.label :date %>
+  <%= f.date_select :date, :include_blank => true %>
+<br />
+  <%= f.label :comments %>
+  <%= f.text_area :comments %>
+<br />
+<hr />
+Agent filter: <br />
+  <%= f.fields_for :agent do |ag| %>
+    <%= render :partial => '/agents/search_fields', :locals => { :f => ag } %>
+  <% end %>
+<br />
+<hr />
+Contact filter: <br />
+	<%= f.fields_for :client do |cl| %>
+	  <%= render :partial => '/clients/search_fields', :locals => { :f => cl } %>
+	<% end %>
+<br />
+<hr />
+Room filter <br />
+  <%= f.fields_for :room do |ind| %>
+	<%= render :partial => '/rooms/search_fields', :locals => { :f => ind } %>
+  <% end %>

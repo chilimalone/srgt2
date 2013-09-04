@@ -2,7 +2,7 @@
 
 <p>
   <strong>Property:</strong>
-  <%= @room.property %>
+  <%= link_to "#{@room.property.address}", property_path(@room.property) %>
 </p>
 
 <p>

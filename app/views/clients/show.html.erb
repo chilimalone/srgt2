@@ -36,8 +36,8 @@
 </p>
 
 <p>
-  <strong>Individual:</strong>
-  <%= @client.individual %>
+  <strong>Contact:</strong>
+  <%= link_to "#{@client.individual.name}", individual_path(@client.individual) %>
 </p>
 
 <%= link_to 'Edit', edit_client_path(@client) %> |

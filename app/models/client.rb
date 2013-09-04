@@ -13,7 +13,7 @@ class Client < ActiveRecord::Base
     scope = scope.scoped :conditions => ["source LIKE ?", "%" + source + "%"] unless source.blank?
     scope = scope.scoped :conditions => ["company LIKE ?", "%" + company + "%"] unless company.blank?
     scope = scope.scoped :conditions => ["price = ", price] unless price.blank?
-    scope = scope.scoped :conditions => ["date_received = ?", "'" + date_received + "'"] unless date_recieved.blank?
+    scope = scope.scoped :conditions => ["date_received = ?", "'" + date_received.to_s + "'"] unless date_received.blank?
     if (!individual.blank?)
       possible_people = individual.search
       condition = possible_people.map { |p| p.to_s }.join("', '")

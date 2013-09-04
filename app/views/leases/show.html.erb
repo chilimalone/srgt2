@@ -47,7 +47,7 @@
 
 <p>
   <strong>Agent:</strong>
-  <%= @lease.agent %>
+  <%= link_to "#{@lease.agent.name}", agent_path(@lease.agent) %>
 </p>
 
 <p>
@@ -57,7 +57,7 @@
 
 <p>
   <strong>Property:</strong>
-  <%= @lease.property %>
+  <%= link_to "#{@lease.property.address}", property_path(@lease.property) %>
 </p>
 
 <%= link_to 'Edit', edit_lease_path(@lease) %> |

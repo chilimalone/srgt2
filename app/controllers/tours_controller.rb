@@ -60,6 +60,18 @@ class ToursController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  # PUTS /tours/search
+  def search
+    @tour = Tour.new(tour_params)
+    @tours = @tour.search
+    render "index"
+  end
+  
+  # GETS /tours/search
+  def search_form
+    render "search"
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

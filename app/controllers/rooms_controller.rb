@@ -60,6 +60,18 @@ class RoomsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  # PUTS /rooms/search
+  def search
+    @room = Room.new(room_params)
+    @rooms = @room.search
+    render "index"
+  end
+  
+  # GETS /rooms/search
+  def search_form
+    render "search"
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

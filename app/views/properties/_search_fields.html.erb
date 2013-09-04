@@ -1,0 +1,23 @@
+  <%= f.label :street_1, "Street 1: " %>
+  <%= f.text_field :street_1 %>
+<br />
+  <%= f.label :street_2, "Street 2: " %>
+  <%= f.text_field :street_2 %>
+<br />
+  <%= f.label :city, "City: " %>
+  <%= f.text_field :city %>
+<br />
+  <%= f.label :state, "State: " %>
+  <%= f.text_field :state %>
+<br />
+  <%= f.label :zip, "Zip code: " %>
+  <%= f.text_field :zip %>
+<br />
+  <%= f.label :notes, "Notes" %>
+  <%= f.text_area :notes %>
+<br />
+<hr />
+Owner filter <br />
+  <%= f.fields_for :individual do |ind| %>
+	<%= render :partial => '/individuals/fields', :locals => { :f => ind } %>
+  <% end %>

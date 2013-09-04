@@ -60,6 +60,18 @@ class LeasesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  # PUTS /leases/search
+  def search
+    @lease = Lease.new(lease_params)
+    @leases = @lease.search
+    render "index"
+  end
+  
+  # GETS /leases/search
+  def search_form
+    render "search"
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -60,6 +60,18 @@ class TenantsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  # PUTS /tenants/search
+  def search
+    @tenant = Tenant.new(tenant_params)
+    @tenants = @tenant.search
+    render "index"
+  end
+  
+  # GETS /tenants/search
+  def search_form
+    render "search"
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

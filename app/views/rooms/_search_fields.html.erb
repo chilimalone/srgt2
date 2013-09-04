@@ -1,0 +1,11 @@
+  <%= f.label :room_number, "Room Number: " %>
+  <%= f.text_field :room_number %>
+<br />
+  <%= f.label :comments, "Comments: " %>
+  <%= f.text_area :comments %>
+<br />
+<hr />
+Property filter: <br />
+  <%= f.fields_for :property do |pr| %>
+	<%= render :partial => '/properties/search_fields', :locals => { :f => pr } %>
+  <% end %>

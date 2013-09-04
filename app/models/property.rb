@@ -17,6 +17,11 @@ class Property < ActiveRecord::Base
     scope = scope.scoped :conditions => ["city LIKE ?", "%" + city + "%"] unless city.blank?
     scope = scope.scoped :conditions => ["state LIKE ?", "%" + state + "%"] unless state.blank?
     scope = scope.scoped :conditions => ["zip LIKE ?", "%" + zip + "%"] unless zip.blank?
+    if (!individual.blank?)
+      possible_people = individual.search
+      condition = possible_people.map { |p| p.to_s }.join("', '")
+      scope = scope.scoped :conditions => ["individual_id IN ?", "['" + condition + "']"]
+    end
     scope
   end
 end

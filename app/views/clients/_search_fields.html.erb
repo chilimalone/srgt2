@@ -2,7 +2,7 @@
 <%= f.text_field :company %>
 <br />
 <%= f.label :date_received, "Date Received: " %>
-<%= f.date_select :date_received %>
+<%= f.date_select :date_received, :include_blank => true %>
 <br />
 <%= f.label :confirmed, "Confirmed: " %>
 <%= f.check_box :confirmed %>
@@ -12,3 +12,9 @@
 <br />
 <%= f.label :source, "Source: " %>
 <%= f.text_field :source %>
+<br />
+<hr />
+Contact filter: <br />
+<%= f.fields_for :individual do |ind| %>
+	<%= render :partial => '/individuals/fields', :locals => { :f => ind } %>
+<% end %>

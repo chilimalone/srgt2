@@ -1,0 +1,38 @@
+  <%= f.label :hear, "Hear: " %>
+  <%= f.check_box :hear %>
+<br />
+  <%= f.label :property, "Property: " %>
+  <%= f.collection_select(:property_id, Property.all, :id, :address) %>
+<br />
+  <%= f.label :closing_date, "Closing date: " %>
+  <%= f.date_select :closing_date %>
+<br />
+  <%= f.label :company, "Company: " %>
+  <%= f.text_field :company %>
+<br />
+  <%= f.label :office_number, "Office number: " %>
+  <%= f.text_field :office_number %>
+<br />
+<hr />
+Buyer filter <br />
+  <%= f.fields_for :buyer do |bu| %>
+	<%= render :partial => '/individuals/fields', :locals => { :f => bu } %>
+  <% end %>
+<br />
+<hr />
+Broker filter <br />
+  <%= f.fields_for :broker do |br| %>
+	<%= render :partial => '/individuals/fields', :locals => { :f => br } %>
+  <% end %>
+<br />
+<hr />
+Agent filter: <br />
+  <%= f.fields_for :agent do |ag| %>
+    <%= render :partial => '/agents/search_fields', :locals => { :f => ag } %>
+  <% end %>
+<br />
+<hr />
+Property filter: <br />
+  <%= f.fields_for :property do |pr| %>
+	<%= render :partial => '/properties/search_fields', :locals => { :f => pr } %>
+  <% end %>

@@ -1,6 +1,6 @@
-<h2>Search for Clients </h2>
+<h2>Search for Properties</h2>
 
-<%= form_for(Client.new, url: clients_search_path) do |f| %>
+<%= form_for(Property.new, url: properties_search_path) do |f| %>
   <%= render :partial => 'search_fields', :locals => { :f => f } %>
 <br />
   <%= f.submit "Search", class: "submit" %>

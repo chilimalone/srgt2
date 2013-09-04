@@ -60,6 +60,18 @@ class SalesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  # PUTS /sales/search
+  def search
+    @sale = Sale.new(sale_params)
+    @sales = @sale.search
+    render "index"
+  end
+  
+  # GETS /sales/search
+  def search_form
+    render "search"
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

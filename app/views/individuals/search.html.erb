@@ -1,0 +1,7 @@
+<h2>Search for Contacts</h2>
+
+<%= form_for(Contact.new, url: contacts_search_path) do |f| %>
+  <%= render :partial => 'fields', :locals => { :f => f } %>
+<br />
+  <%= f.submit "Search", class: "submit" %>
+<% end %>

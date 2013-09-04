@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Individual:</strong>
-  <%= @tenant.individual %>
+  <strong>Contact:</strong>
+  <%= link_to "#{@tenant.individual.name}", individual_path(@tenant.individual) %>
 </p>
 
 <p>
@@ -17,12 +17,12 @@
 
 <p>
   <strong>Property:</strong>
-  <%= @tenant.property %>
+  <%= link_to "#{@tenant.property.address}", property_path(@tenant.property) %>
 </p>
 
 <p>
   <strong>Room:</strong>
-  <%= @tenant.room %>
+  <%= link_to "#{@tenant.room.room_number}", property_path(@tenant.room) %>
 </p>
 
 <%= link_to 'Edit', edit_tenant_path(@tenant) %> |
