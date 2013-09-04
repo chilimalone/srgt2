@@ -3,15 +3,10 @@
 <table>
   <thead>
     <tr>
-      <th>Comments</th>
-      <th>File number</th>
-      <th>Source</th>
-      <th>Company</th>
+      <th>Name</th>
       <th>Date received</th>
-      <th>Confirmed</th>
-      <th>Individual</th>
-      <th>Comments</th>
-      <th></th>
+      <th>File number</th>
+      <th>Company</th>
       <th></th>
       <th></th>
     </tr>
@@ -20,17 +15,12 @@
   <tbody>
     <% @clients.each do |client| %>
       <tr>
-        <td><%= client.comments %></td>
-        <td><%= client.file_number %></td>
-        <td><%= client.source %></td>
-        <td><%= client.company %></td>
+        <td><%= link_to "#{client.individual.fname} #{client.individual.lname}", client %></td>
         <td><%= client.date_received %></td>
-        <td><%= client.confirmed %></td>
-        <td><%= client.individual %></td>
-        <td><%= client.comments %></td>
-        <td><%= link_to 'Show', client %></td>
+        <td><%= client.file_number %></td>
+        <td><%= client.company %></td>
         <td><%= link_to 'Edit', edit_client_path(client) %></td>
-        <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

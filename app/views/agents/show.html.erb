@@ -15,9 +15,4 @@
   <%= @agent.username %>
 </p>
 
-<%= link_to 'Edit', edit_agent_path(@agent) %> |
-<%= link_to 'Back', agents_path %>
-
-<%= content_for :search do %>
-<%= render 'search' %>
-<% end %>
+<%= link_to 'Edit', edit_agent_path(@agent) %>

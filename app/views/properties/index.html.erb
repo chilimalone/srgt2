@@ -3,13 +3,8 @@
 <table>
   <thead>
     <tr>
-      <th>Street 1</th>
-      <th>Street 2</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Zip</th>
-      <th>Notes</th>
-      <th>Individual</th>
+      <th>Address</th>
+      <th>Owner</th>
       <th></th>
       <th></th>
       <th></th>
@@ -19,16 +14,15 @@
   <tbody>
     <% @properties.each do |property| %>
       <tr>
-        <td><%= property.street_1 %></td>
-        <td><%= property.street_2 %></td>
-        <td><%= property.city %></td>
-        <td><%= property.state %></td>
-        <td><%= property.zip %></td>
-        <td><%= property.notes %></td>
-        <td><%= link_to 'Edit Individual', edit_individual_path(property.individual) %></td>
+        <td>
+			<%= property.street_1 %><br />
+        	<%= property.street_2 %><br />
+        	<%= property.city %> <%= property.state %> <%= property.zip %>
+		</td>
+        <td><%= property.individual.fname %> <%= property.individual.lname %></td>
         <td><%= link_to 'Show', property %></td>
         <td><%= link_to 'Edit', edit_property_path(property) %></td>
-        <td><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -16,6 +16,7 @@
 				<% if current_agent %>
 				  <p>Welcome <%= current_agent.fname %> <%= current_agent.lname %></p>
 				  <br />
+				  <%= link_to "Profile", agent_path(current_agent) %> | 
 				  <%= link_to "Sign Out", agents_logout_path %>
 				<% else %>
 				  <%= form_for(Agent.new, :url => { :controller => 'agents', :action => 'login' }) do |f| %>
@@ -39,16 +40,16 @@
 						<li><%= link_to "Search", tours_path %></li>
 					</ul>
 				</li>
-				<li><%= link_to "BUILDINGS", properties_path %>
+				<li><%= link_to "PROPERTIES", properties_path %>
 					<ul>
-						<li><%= link_to "New Building", new_property_path %></li>
+						<li><%= link_to "New Property", new_property_path %></li>
 						<li><%= link_to "Search", properties_path %></li>
 					</ul>
 				</li>
 				<li><%= link_to "CLIENTS", clients_path %>
 					<ul>
 						<li><%= link_to "New Client", new_client_path %></li>
-						<li><%= link_to "Search", clients_path %></li>
+						<li><%= link_to "Search", clients_search_path %></li>
 					</ul>
 				</li>
 				<li><%= link_to "TENANTS", tenants_path %></a>
@@ -57,9 +58,9 @@
 						<li><%= link_to "Search", tenants_path %></li>
 					</ul>
 				</li>
-				<li><%= link_to "OWNERS", individuals_path %>
+				<li><%= link_to "CONTACTS", individuals_path %>
 					<ul>
-						<li><%= link_to "New Owner", new_individual_path %></li>
+						<li><%= link_to "New Contact", new_individual_path %></li>
 						<li><%= link_to "Search", individuals_path %></li>
 					</ul>
 				</li>
@@ -87,10 +88,7 @@
 		<div id="subbanner">
 			<h1>Welcome to SRG Internal Listings Database</h1>
 		</div>
-		<div id="searchform" class="fixedNav">
-			<%= yield :search %>
-		</div>
-		<div id="subcontent">
+		<div id="content">
 			<%= yield %>
 		</div>
 		<div id="footer">

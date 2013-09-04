@@ -3,13 +3,11 @@
 <table>
   <thead>
     <tr>
-      <th>Agent</th>
-      <th>Hear</th>
-      <th>Individual</th>
+      <th>Buyer</th>
       <th>Property</th>
+      <th>Seller</th>
       <th>Closing date</th>
-      <th>Company</th>
-      <th>Office number</th>
+      <th>Agent</th>
       <th></th>
       <th></th>
       <th></th>
@@ -19,16 +17,17 @@
   <tbody>
     <% @sales.each do |sale| %>
       <tr>
-        <td><%= sale.agent %></td>
-        <td><%= sale.hear %></td>
-        <td><%= sale.buyer %></td>
-        <td><%= sale.property %></td>
+        <td><%= sale.buyer.fname %> <%= sale.buyer.lname %></td>
+        <td>
+			<%= sale.property.street_1 %><br />
+			<%= sale.property.street_2 %><br />
+			<%= sale.property.city %> <%= room.property.state %> <%= room.property.zip %></td>
+        <td><%= sale.broker.fname %> <%= sale.broker.lname %></td>
         <td><%= sale.closing_date %></td>
-        <td><%= sale.company %></td>
-        <td><%= sale.office_number %></td>
+        <td><%= sale.agent.fname %> <%= sale.agent.lname %></td>
         <td><%= link_to 'Show', sale %></td>
         <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
-        <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

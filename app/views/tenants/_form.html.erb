@@ -12,19 +12,19 @@
   <% end %>
 
   <br />
-    <%= f.label :individual %>
-    <%= f.collection_select(:individual_id, Individual.all, :id, :fname) %>
+    <%= f.label :individual, "Contact: " %>
+    <%= f.collection_select(:individual_id, Individual.all, :id, :name) %>
   <br />
-    <%= f.label :leased_signed %>
+    <%= f.label :leased_signed, "Lease Signed: " %>
     <%= f.date_select :leased_signed %>
   <br />
-    <%= f.label :lease_expired %>
+    <%= f.label :lease_expired, "Lease Expired: " %>
     <%= f.date_select :lease_expired %>
   <br />
-    <%= f.label :property %>
-    <%= f.collection_select(:property_id, Property.all, :id, :street_1) %>
+    <%= f.label :property, "Property: " %>
+    <%= f.collection_select(:property_id, Property.all, :id, :address) %>
   <br />
-    <%= f.label :room %>
+    <%= f.label :room, "Room: " %>
     <%= f.collection_select(:room_id, Room.all, :id, :room_number) %>
   <br />
     <%= f.submit "Save", class: "submit" %>

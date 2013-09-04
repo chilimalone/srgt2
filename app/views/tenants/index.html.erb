@@ -3,11 +3,11 @@
 <table>
   <thead>
     <tr>
-      <th>Individual</th>
-      <th>Leased signed</th>
-      <th>Lease expired</th>
+      <th>Client Name</th>
       <th>Property</th>
       <th>Room</th>
+      <th>Lease signed</th>
+	  <th>Lease expired</th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,11 +17,15 @@
   <tbody>
     <% @tenants.each do |tenant| %>
       <tr>
-        <td><%= tenant.individual %></td>
+        <td><%= tenant.individual.fname %> <%= tenant.individual.lname %></td>
+        <td>
+        	<%= tenant.property.street_1 %><br />
+			<%= tenant.property.street_2 %><br />
+			<%= tenant.property.city %> <%= tenant.property.state %> <%= tenant.property.zip %>
+        </td>
+        <td><%= tenant.room.room_number %></td>
         <td><%= tenant.leased_signed %></td>
-        <td><%= tenant.lease_expired %></td>
-        <td><%= tenant.property %></td>
-        <td><%= tenant.room %></td>
+		<td><%= tenant.lease_expired %></td>
         <td><%= link_to 'Show', tenant %></td>
         <td><%= link_to 'Edit', edit_tenant_path(tenant) %></td>
         <td><%= link_to 'Destroy', tenant, method: :delete, data: { confirm: 'Are you sure?' } %></td>

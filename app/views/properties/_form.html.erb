@@ -11,8 +11,8 @@
     </div>
   <% end %>
   <br />
-    <%= f.label :individual, "Owner: " %>
-    <%= f.collection_select(:individual_id, Individual.all, :id, :fname) %>
+    <%= f.label :individual, "Contact: " %>
+    <%= f.collection_select(:individual_id, Individual.all, :id, :name) %>
   <br />
     <%= f.label :street_1, "Street 1: " %>
     <%= f.text_field :street_1 %>

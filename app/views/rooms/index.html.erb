@@ -3,9 +3,8 @@
 <table>
   <thead>
     <tr>
-      <th>Property</th>
+      <th>Property Address</th>
 	  <th>Room Number</th>
-      <th>Comments</th>
       <th></th>
       <th></th>
       <th></th>
@@ -15,9 +14,12 @@
   <tbody>
     <% @rooms.each do |room| %>
       <tr>
-        <td><%= room.property %></td>
+        <td>
+			<%= room.property.street_1 %><br />
+			<%= room.property.street_2 %><br />
+			<%= room.property.city %> <%= room.property.state %> <%= room.property.zip %>
+		</td>
 		<td><%= room.room_number %></td>
-        <td><%= room.comments %></td>
         <td><%= link_to 'Show', room %></td>
         <td><%= link_to 'Edit', edit_room_path(room) %></td>
         <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>

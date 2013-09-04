@@ -3,19 +3,11 @@
 <table>
   <thead>
     <tr>
-      <th>Client</th>
-      <th>Rental amount</th>
-      <th>Move out</th>
-      <th>Date</th>
-      <th>Move in</th>
-      <th>Welcome home</th>
-      <th>Thank you sent</th>
-      <th>Dropped date</th>
-      <th>Agent</th>
-      <th>Referral amount</th>
+      <th>Name</th>
       <th>Property</th>
-      <th>Comments</th>
-      <th></th>
+      <th>Move in</th>
+      <th>Move out</th>
+      <th>Agent</th>
       <th></th>
       <th></th>
     </tr>
@@ -24,21 +16,13 @@
   <tbody>
     <% @leases.each do |lease| %>
       <tr>
-        <td><%= lease.client %></td>
-        <td><%= lease.rental_amount %></td>
-        <td><%= lease.move_out %></td>
-        <td><%= lease.date %></td>
-        <td><%= lease.move_in %></td>
-        <td><%= lease.welcome_home %></td>
-        <td><%= lease.thank_you_sent %></td>
-        <td><%= lease.dropped_date %></td>
-        <td><%= lease.agent %></td>
-        <td><%= lease.referral_amount %></td>
+        <td><%= link_to "#{lease.client.fname} #{lease.client.lname}", lease %></td>
         <td><%= lease.property %></td>
-        <td><%= lease.comments %></td>
-        <td><%= link_to 'Show', lease %></td>
+        <td><%= lease.move_in %></td>
+        <td><%= lease.move_out %></td>
+        <td><%= lease.agent.fname %> <%= lease.agent.lname %></td>
         <td><%= link_to 'Edit', edit_lease_path(lease) %></td>
-        <td><%= link_to 'Destroy', lease, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', lease, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

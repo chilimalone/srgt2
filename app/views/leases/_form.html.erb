@@ -11,38 +11,38 @@
     </div>
   <% end %>
 	<br />
-    <%= f.label :client %>
-    <%= f.collection_select(:client_id, Client.all, :id, :fname) %>
+    <%= f.label :client, "Client: " %>
+    <%= f.collection_select(:client_id, Client.all, :id, :name) %>
 	<br />
-    <%= f.label :rental_amount %>
+    <%= f.label :rental_amount, "Rental Amount: " %>
     <%= f.text_field :rental_amount %>
 	<br />
-    <%= f.label :move_out %>
+	<%= f.label :move_in, "Move in date:" %>
+    <%= f.date_select :move_in %>
+	<br />
+    <%= f.label :move_out, "Move out date: " %>
     <%= f.text_field :move_out %>
   <br />
-    <%= f.label :date %>
+    <%= f.label :date, "Date: " %>
     <%= f.text_field :date %>
   <br />
-    <%= f.label :move_in %>
-    <%= f.date_select :move_in %>
-  <br />
-    <%= f.label :welcome_home %>
+    <%= f.label :welcome_home, "Welcome Home: " %>
     <%= f.check_box :welcome_home %>
   <br />
-    <%= f.label :thank_you_sent %>
+    <%= f.label :thank_you_sent, "Thank you sent: " %>
     <%= f.check_box :thank_you_sent %>
   <br />
-    <%= f.label :dropped_date %>
+    <%= f.label :dropped_date, "Dropped date: " %>
     <%= f.date_select :dropped_date %>
   <br />
-    <%= f.label :agent %>
-    <%= f.collection_select(:agent_id, Agent.all, :id, :fname) %>
+    <%= f.label :agent, "Agent: " %>
+    <%= f.collection_select(:agent_id, Agent.all, :id, :name) %>
   <br />
-    <%= f.label :referral_amount %>
+    <%= f.label :referral_amount, "Referral Amount: " %>
     <%= f.text_field :referral_amount %>
   <br />
-    <%= f.label :property, "Property:" %>
-   	<%= f.collection_select(:property_id, Property.all, :id, :street_1)%>
+    <%= f.label :property, "Property: " %>
+   	<%= f.collection_select(:property_id, Property.all, :id, :address)%>
   <br />
     <%= f.label :comments %>
     <%= f.text_area :comments %>

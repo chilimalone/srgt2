@@ -2,7 +2,6 @@
   <% if @sale.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@sale.errors.count, "error") %> prohibited this sale from being saved:</h2>
-
       <ul>
       <% @sale.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -13,24 +12,27 @@
 
   <br />
     <%= f.label :agent, "Agent: " %>
-    <%= f.collection_select(:agent_id, Agent.all, :id, :fname) %>
+    <%= f.collection_select(:agent_id, Agent.all, :id, :name) %>
   <br />
-    <%= f.label :hear %>
+    <%= f.label :hear, "Hear: " %>
     <%= f.check_box :hear %>
   <br />
-    <%= f.label :buyer, "Buyer: " %>
-    <%= f.collection_select(:individual_id, Individual.all, :id, :fname) %>
+    <%= f.label :buyer, "Buyer Contact: " %>
+    <%= f.collection_select(:buyer_id, Individual.all, :id, :name) %>
   <br />
-    <%= f.label :property %>
-    <%= f.collection_select(:property_id, Property.all, :id, :street_1) %>
+    <%= f.label :broker, "Broker Contact: " %>
+    <%= f.collection_select(:broker_id, Individual.all, :id, :name) %>
   <br />
-    <%= f.label :closing_date %>
+    <%= f.label :property, "Property: " %>
+    <%= f.collection_select(:property_id, Property.all, :id, :address) %>
+  <br />
+    <%= f.label :closing_date, "Closing date: " %>
     <%= f.date_select :closing_date %>
   <br />
-    <%= f.label :company %>
+    <%= f.label :company, "Company: " %>
     <%= f.text_field :company %>
   <br />
-    <%= f.label :office_number %>
+    <%= f.label :office_number, "Office number: " %>
     <%= f.text_field :office_number %>
   <br />
     <%= f.submit "Save", class: "submit" %>

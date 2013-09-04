@@ -13,16 +13,16 @@
 
   <br />
     <%= f.label :agent, "Agent" %>
-    <%= f.collection_select(:agent_id, Agent.all, :id, :fname) %>
+    <%= f.collection_select(:agent_id, Agent.all, :id, :name) %>
   <br />
     <%= f.label :client %>
-    <%= f.collection_select(:client_id, Individual.all, :id, :fname) %>
+    <%= f.collection_select(:client_id, Client.all, :id, :name) %>
   <br />
     <%= f.label :date %>
     <%= f.date_select :date %>
   <br />
     <%= f.label :property %>
-    <%= f.collection_select(:property_id, Property.all, :id, :street_1) %>
+    <%= f.collection_select(:property_id, Property.all, :id, :address) %>
   <br />
     <%= f.label :room %>
     <%= f.collection_select(:room_id, Room.all, :id, :room_number) %>

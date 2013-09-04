@@ -1,9 +1,10 @@
 class Agent < ActiveRecord::Base
-  attr_accessor :password, :password_confirmation
+  attr_accessor :password, :password_confirmation, :old_password
   before_save :encrypt_password, :standardize
   
   validates_confirmation_of :password
-  validates_uniqueness_of :username
+  validates :username, uniqueness: true, presence: true
+  validates :password, length: { minimum: 6 }
   
   def self.authenticate(username, password)
     user = find_by_username(username.downcase)
@@ -19,6 +20,10 @@ class Agent < ActiveRecord::Base
     find(:all, :conditions => ['username LIKE ? OR fname LIKE ? OR lname LIKE', name_condition, name_condition, name_condition])
   end
   
+  def name
+    "#{fname} #{lname}"
+  end
+  
   def search
     scope = Agent.scoped({})
     scope = scope.scoped :conditions => ["username LIKE ?", "%" + username + "%"] unless username.blank?
@@ -29,17 +34,17 @@ class Agent < ActiveRecord::Base
   
   private
   def encrypt_password
-    if password.present?
-      self.password_salt = BCrypt::Engine.generate_salt
-      self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
-    end
+    self.password_salt = BCrypt::Engine.generate_salt
+    self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
   end
   
   def standardize
-    fname.capitalize! if fname.present?
-    lname.capitalize! if lname.present?
-    username = username.downcase
+    self.fname = fname.capitalize if fname.present?
+    self.lname = lname.capitalize if lname.present?
+    self.username = username.downcase
   end
   
   has_many :leases
+  has_many :tours
+  has_many :sales
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130803201144) do
+ActiveRecord::Schema.define(version: 20130901150629) do
 
   create_table "agents", force: true do |t|
     t.string   "fname"
@@ -107,6 +107,8 @@ ActiveRecord::Schema.define(version: 20130803201144) do
     t.string   "office_number"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "buyer_id"
+    t.integer  "broker_id"
   end
 
   add_index "sales", ["agent_id"], name: "index_sales_on_agent_id"

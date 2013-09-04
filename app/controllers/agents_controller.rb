@@ -58,8 +58,16 @@ class AgentsController < ApplicationController
   # PATCH/PUT /agents/1
   # PATCH/PUT /agents/1.json
   def update
+    temp_agent = Agent.authenticate(@agent.username, params[:agent][:old_password])
+    if temp_agent.nil?
+      @agent.errors[:old_password] = "Old password is incorrect"
+    end
+    # Make sure validation passes if password is not updated.
+    if params[:agent][:password].blank? && params[:agent][:password_confirmation].blank?
+      params[:agent][:password] = params[:agent][:password_confirmation] = params[:agent][:old_password]
+    end
     respond_to do |format|
-      if @agent.update(agent_params)
+      if ((!temp_agent.nil?) && @agent.update(agent_params))
         format.html { redirect_to @agent, notice: 'Agent was successfully updated.' }
         format.json { head :no_content }
       else
@@ -85,6 +93,11 @@ class AgentsController < ApplicationController
     @agents = @agent.search
     render "index"
   end
+  
+  # GETS /agents/search
+  def search_form
+    render "search"
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -94,6 +107,6 @@ class AgentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def agent_params
-      params.require(:agent).permit(:fname, :lname, :username, :password, :password_confirmation)
+      params.require(:agent).permit(:fname, :lname, :username, :password, :password_confirmation, :old_password)
     end
 end

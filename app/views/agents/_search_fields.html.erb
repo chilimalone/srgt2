@@ -1,4 +1,3 @@
-<%= form_for(Agent.new, url: agents_search_path) do |f| %>
   <%= f.label :fname, "First Name: " %>
   <%= f.text_field :fname %>
 <br />
@@ -7,6 +6,3 @@
 <br />
   <%= f.label :username, "Username: " %>
   <%= f.text_field :username %>
-<br />
-  <%= f.submit "Search", class: "submit" %>
-<% end %>

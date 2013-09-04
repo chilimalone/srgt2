@@ -1,26 +1,36 @@
 Srgt2::Application.routes.draw do
   root :to => 'home#index'
+
+  post '/leases/search', to: 'leases#search'
   resources :leases
 
+  post '/tours/search', to: 'posts#search'
   resources :tours
 
+  post '/tenants/search', to: 'tenants#search'
   resources :tenants
 
+  post '/rooms/search', to: 'rooms#search'
   resources :rooms
 
+  post '/sales/search', to: 'sales#search'
   resources :sales
 
+  post '/properties/search', to: 'properties#search'
   resources :properties
 
   get '/agents/login', to: 'agents#new'
   post '/agents/login', to: 'agents#login'
   get '/agents/logout', to: 'agents#logout'
-  get '/agents/search', to: 'agents#new'
+  get '/agents/search', to: 'agents#search_form'
   post '/agents/search', to: 'agents#search'
   resources :agents
 
+  get '/clients/search', to: 'clients#search_form'
+  post '/clients/search', to: 'clients#search'
   resources :clients
 
+  get '/individuals/search', to: 'individuals#search'
   resources :individuals
 
   # The priority is based upon order of creation: first created -> highest priority.

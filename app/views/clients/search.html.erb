@@ -1,0 +1,5 @@
+<%= form_for(Client.new, url: clients_search_path) do |f| %>
+  <%= render :partial => 'search_fields', :locals => { :f => f } %>
+<br />
+  <%= f.submit "Search", class: "submit" %>
+<% end %>

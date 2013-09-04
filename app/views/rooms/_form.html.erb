@@ -13,12 +13,12 @@
 
   <br />
     <%= f.label :property, "Property: " %>
-    <%= f.collection_select(:property_id, Property.all, :id, :street_1) %>
+    <%= f.collection_select(:property_id, Property.all, :id, :address) %>
   <br />
 	<%= f.label :room_number, "Room Number: " %>
 	<%= f.text_field :room_number %>
   <br />
-    <%= f.label :comments %>
+    <%= f.label :comments, "Comments: " %>
     <%= f.text_area :comments %>
   <br />
     <%= f.submit "Save", class: "submit" %>

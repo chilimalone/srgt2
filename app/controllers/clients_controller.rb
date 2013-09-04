@@ -60,6 +60,18 @@ class ClientsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  # PUTS /clients/search
+  def search
+    @client = Client.new(client_params)
+    @clients = @client.search
+    render "index"
+  end
+  
+  # GETS /clients/search
+  def search_form
+    render "search"
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
