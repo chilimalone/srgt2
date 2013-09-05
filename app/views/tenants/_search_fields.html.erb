@@ -4,14 +4,15 @@
   <%= f.label :lease_expired, "Lease Expired: " %>
   <%= f.date_select :lease_expired, :include_blank => true %>
 <br />
-<hr />
+<div class="subfields">
 Contact filter <br />
   <%= f.fields_for :individual do |ind| %>
 	<%= render :partial => '/individuals/fields', :locals => { :f => ind } %>
   <% end %>
-<br />
-<hr />
+</div>
+<div class="subfields">
 Room filter <br />
   <%= f.fields_for :room do |ind| %>
 	<%= render :partial => '/rooms/search_fields', :locals => { :f => ind } %>
   <% end %>
+</div>

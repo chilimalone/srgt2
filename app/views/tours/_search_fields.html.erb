@@ -4,20 +4,21 @@
   <%= f.label :comments %>
   <%= f.text_area :comments %>
 <br />
-<hr />
+<div class="subfields">
 Agent filter: <br />
   <%= f.fields_for :agent do |ag| %>
     <%= render :partial => '/agents/search_fields', :locals => { :f => ag } %>
   <% end %>
-<br />
-<hr />
+</div>
+<div class="subfields">
 Contact filter: <br />
 	<%= f.fields_for :client do |cl| %>
 	  <%= render :partial => '/clients/search_fields', :locals => { :f => cl } %>
 	<% end %>
-<br />
-<hr />
-Room filter <br />
+</div>
+<div class="subfields">
+Room filter: <br />
   <%= f.fields_for :room do |ind| %>
 	<%= render :partial => '/rooms/search_fields', :locals => { :f => ind } %>
   <% end %>
+</div>

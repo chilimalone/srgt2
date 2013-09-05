@@ -13,8 +13,9 @@
 <%= f.label :source, "Source: " %>
 <%= f.text_field :source %>
 <br />
-<hr />
+<div class="subfields">
 Contact filter: <br />
 <%= f.fields_for :individual do |ind| %>
 	<%= render :partial => '/individuals/fields', :locals => { :f => ind } %>
 <% end %>
+</div>

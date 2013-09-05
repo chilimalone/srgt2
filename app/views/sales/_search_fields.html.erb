@@ -13,26 +13,27 @@
   <%= f.label :office_number, "Office number: " %>
   <%= f.text_field :office_number %>
 <br />
-<hr />
+<div class="subfields">
 Buyer filter <br />
   <%= f.fields_for :buyer do |bu| %>
 	<%= render :partial => '/individuals/fields', :locals => { :f => bu } %>
   <% end %>
-<br />
-<hr />
+</div>
+<div class="subfields">
 Broker filter <br />
   <%= f.fields_for :broker do |br| %>
 	<%= render :partial => '/individuals/fields', :locals => { :f => br } %>
   <% end %>
-<br />
-<hr />
+</div>
+<div class="subfields">
 Agent filter: <br />
   <%= f.fields_for :agent do |ag| %>
     <%= render :partial => '/agents/search_fields', :locals => { :f => ag } %>
   <% end %>
-<br />
-<hr />
+</div>
+<div class="subfields">
 Property filter: <br />
   <%= f.fields_for :property do |pr| %>
 	<%= render :partial => '/properties/search_fields', :locals => { :f => pr } %>
   <% end %>
+</div>

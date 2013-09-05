@@ -297,13 +297,12 @@ code, pre        { background-color:#FF9; padding:2px 0px; margin:4px 25px; font
 }
 
 /********* Search *********/
-#searchnav {
-	width: 170px;
-	padding:20px;
+.subfields {
+	border: solid 1px #000;
+	padding: 10px;
 }
-#searchnav ul li {
-	display:inline;
-}
+
+
 .active a {
 	padding: 3px 20px;
     background: #0066FF;

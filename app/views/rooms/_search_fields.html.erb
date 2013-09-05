@@ -4,8 +4,9 @@
   <%= f.label :comments, "Comments: " %>
   <%= f.text_area :comments %>
 <br />
-<hr />
+<div class="subfields">
 Property filter: <br />
   <%= f.fields_for :property do |pr| %>
 	<%= render :partial => '/properties/search_fields', :locals => { :f => pr } %>
   <% end %>
+</div>

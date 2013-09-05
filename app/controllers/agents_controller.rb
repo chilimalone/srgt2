@@ -105,7 +105,7 @@ class AgentsController < ApplicationController
     else
       users = Agent.all
     end
-    list = users.map {|u| Hash[id: u.id, label: u.name, name: u.name]}
+    list = users.map {|u| Hash[id: u.id, label: u.name + " (" + u.username + ")", name: u.name]}
     respond_to do |format|
       format.json { render json: list }
     end

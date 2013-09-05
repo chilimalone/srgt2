@@ -72,6 +72,9 @@ class ClientsController < ApplicationController
   def search_form
     render "search"
   end
+  
+  def auto_clients
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

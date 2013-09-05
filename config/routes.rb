@@ -34,10 +34,12 @@ Srgt2::Application.routes.draw do
 
   get '/clients/search', to: 'clients#search_form'
   post '/clients/search', to: 'clients#search'
+  match '/clients/autocomplete' => 'clients#auto_clients', via: [:get, :post]
   resources :clients
 
   get '/individuals/search', to: 'individuals#search_form'
   post '/individuals/search', to: 'individuals#search'
+  match '/individuals/autocomplete' => 'individuals#auto_contacts', via: [:get, :post]
   resources :individuals
 
   # The priority is based upon order of creation: first created -> highest priority.

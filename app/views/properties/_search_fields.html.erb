@@ -16,8 +16,9 @@
   <%= f.label :notes, "Notes" %>
   <%= f.text_area :notes %>
 <br />
-<hr />
+<div class="subfields">
 Owner filter <br />
   <%= f.fields_for :individual do |ind| %>
 	<%= render :partial => '/individuals/fields', :locals => { :f => ind } %>
   <% end %>
+</div>

@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
 	$('#lease_agent_name').autocomplete {
-		source: "/agents/autocomplete",
-		minLength: 2,
-		select: (event, ui) -> $('#lease_agent_id').val(ui.item.id)
+		source: '/agents/autocomplete',
+		select: (event, ui) ->
+			$('#lease_agent_id').val(ui.item.id)
 	}

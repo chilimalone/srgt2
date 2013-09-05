@@ -72,6 +72,9 @@ class IndividualsController < ApplicationController
     @individuals = @individual.search
     render "index"
   end
+  
+  def auto_contacts
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
