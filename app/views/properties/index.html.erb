@@ -19,7 +19,7 @@
         	<%= property.street_2 %><br />
         	<%= property.city %> <%= property.state %> <%= property.zip %>
 		</td>
-        <td><%= property.individual.fname %> <%= property.individual.lname %></td>
+        <td><%= property.individual.name %></td>
         <td><%= link_to 'Show', property %></td>
         <td><%= link_to 'Edit', edit_property_path(property) %></td>
         <td><%= link_to 'Delete', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>

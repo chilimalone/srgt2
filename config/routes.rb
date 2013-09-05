@@ -29,6 +29,7 @@ Srgt2::Application.routes.draw do
   get '/agents/logout', to: 'agents#logout'
   get '/agents/search', to: 'agents#search_form'
   post '/agents/search', to: 'agents#search'
+  match '/agents/autocomplete' => 'agents#auto_agents', via: [:get, :post]
   resources :agents
 
   get '/clients/search', to: 'clients#search_form'

@@ -98,6 +98,18 @@ class AgentsController < ApplicationController
   def search_form
     render "search"
   end
+  
+  def auto_agents
+    if params[:term]
+      users = Agent.search_by_name(params[:term])
+    else
+      users = Agent.all
+    end
+    list = users.map {|u| Hash[id: u.id, label: u.name, name: u.name]}
+    respond_to do |format|
+      format.json { render json: list }
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

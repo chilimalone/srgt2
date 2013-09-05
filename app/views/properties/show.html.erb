@@ -32,7 +32,9 @@
 
 <p>
   <strong>Owner Contact:</strong>
+  <% if @property.individual %>
   <%= link_to "#{@property.individual.name}", individual_path(@property.individual) %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_property_path(@property) %> |

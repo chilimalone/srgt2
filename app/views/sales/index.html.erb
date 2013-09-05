@@ -17,14 +17,14 @@
   <tbody>
     <% @sales.each do |sale| %>
       <tr>
-        <td><%= sale.buyer.fname %> <%= sale.buyer.lname %></td>
+        <td><%= sale.buyer.name %></td>
         <td>
 			<%= sale.property.street_1 %><br />
 			<%= sale.property.street_2 %><br />
 			<%= sale.property.city %> <%= room.property.state %> <%= room.property.zip %></td>
-        <td><%= sale.broker.fname %> <%= sale.broker.lname %></td>
+        <td><%= sale.broker.name %></td>
         <td><%= sale.closing_date %></td>
-        <td><%= sale.agent.fname %> <%= sale.agent.lname %></td>
+        <td><%= sale.agent.name %></td>
         <td><%= link_to 'Show', sale %></td>
         <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
         <td><%= link_to 'Delete', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>

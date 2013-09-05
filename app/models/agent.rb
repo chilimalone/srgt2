@@ -1,5 +1,5 @@
 class Agent < ActiveRecord::Base
-  attr_accessor :password, :password_confirmation, :old_password
+  attr_accessor :password, :password_confirmation, :old_password, :tmp_name
   before_save :encrypt_password, :standardize
   
   validates_confirmation_of :password
@@ -17,7 +17,7 @@ class Agent < ActiveRecord::Base
   
   def self.search_by_name(name)
     name_condition = name + "%"
-    find(:all, :conditions => ['username LIKE ? OR fname LIKE ? OR lname LIKE', name_condition, name_condition, name_condition])
+    find(:all, :conditions => ['username LIKE ? OR fname LIKE ? OR lname LIKE ?', name_condition, name_condition, name_condition])
   end
   
   def name

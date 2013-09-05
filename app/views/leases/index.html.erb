@@ -16,11 +16,11 @@
   <tbody>
     <% @leases.each do |lease| %>
       <tr>
-        <td><%= link_to "#{lease.client.fname} #{lease.client.lname}", lease %></td>
+        <td><%= link_to "#{lease.client.name}", lease %></td>
         <td><%= lease.property %></td>
         <td><%= lease.move_in %></td>
         <td><%= lease.move_out %></td>
-        <td><%= lease.agent.fname %> <%= lease.agent.lname %></td>
+        <td><% if lease.agent %><%= lease.agent.name %><% end %></td>
         <td><%= link_to 'Edit', edit_lease_path(lease) %></td>
         <td><%= link_to 'Delete', lease, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

@@ -2,7 +2,9 @@
 
 <p>
   <strong>Property:</strong>
+  <% if @room.property %>
   <%= link_to "#{@room.property.address}", property_path(@room.property) %>
+  <% end %>
 </p>
 
 <p>

@@ -35,8 +35,9 @@
     <%= f.label :dropped_date, "Dropped date: " %>
     <%= f.date_select :dropped_date %>
   <br />
-    <%= f.label :agent, "Agent: " %>
-    <%= f.collection_select(:agent_id, Agent.all, :id, :name) %>
+    <%= f.label :agent_name, "Agent: " %>
+    <%= f.text_field :agent_name %>
+	<%= f.hidden_field :agent_id %>
   <br />
     <%= f.label :referral_amount, "Referral Amount: " %>
     <%= f.text_field :referral_amount %>

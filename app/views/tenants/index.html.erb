@@ -17,7 +17,7 @@
   <tbody>
     <% @tenants.each do |tenant| %>
       <tr>
-        <td><%= tenant.individual.fname %> <%= tenant.individual.lname %></td>
+        <td><%= tenant.individual.name %></td>
         <td>
         	<%= tenant.property.street_1 %><br />
 			<%= tenant.property.street_2 %><br />

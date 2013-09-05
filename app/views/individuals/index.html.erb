@@ -15,7 +15,7 @@
   <tbody>
     <% @individuals.each do |individual| %>
       <tr>
-        <td><%= link_to "#{individual.fname} #{individual.lname}", individual %></td>
+        <td><%= link_to "#{individual.name}", individual %></td>
         <td>
 			<%= individual.street_1 %><br />
 		    <%= individual.street_2 %><br />

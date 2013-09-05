@@ -2,7 +2,9 @@
 
 <p>
   <strong>Client:</strong>
-  <%= @lease.client %>
+  <% if @lease.client %>
+  <%= link_to "#{@lease.client.name}", @lease.client %>
+  <% end %>
 </p>
 
 <p>
@@ -47,7 +49,9 @@
 
 <p>
   <strong>Agent:</strong>
+  <% if @lease.agent %>
   <%= link_to "#{@lease.agent.name}", agent_path(@lease.agent) %>
+  <% end %>
 </p>
 
 <p>
@@ -57,7 +61,9 @@
 
 <p>
   <strong>Property:</strong>
+  <% if @lease.property %>
   <%= link_to "#{@lease.property.address}", property_path(@lease.property) %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_lease_path(@lease) %> |

@@ -2,7 +2,9 @@
 
 <p>
   <strong>Contact:</strong>
-  <%= link_to "#{@tenant.individual.name}", individual_path(@tenant.individual) %>
+  <% if @tenant.individual %>
+  <%= link_to "#{@tenant.individual.name}", @tenant.individual %>
+  <% end %>
 </p>
 
 <p>
@@ -17,12 +19,16 @@
 
 <p>
   <strong>Property:</strong>
+  <% if @tenant.property %>
   <%= link_to "#{@tenant.property.address}", property_path(@tenant.property) %>
+  <% end %>
 </p>
 
 <p>
   <strong>Room:</strong>
+  <% if @tenant.room %>
   <%= link_to "#{@tenant.room.room_number}", property_path(@tenant.room) %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_tenant_path(@tenant) %> |

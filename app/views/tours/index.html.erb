@@ -17,7 +17,7 @@
   <tbody>
     <% @tours.each do |tour| %>
       <tr>
-        <td><%= tour.client.fname %> <%= tour.client.lname %></td>
+        <td><%= tour.client.name %></td>
         <td>
 			<%= tour.property.street_1 %><br />
 			<%= tour.property.street_2 %><br />
