@@ -15,9 +15,11 @@
     <% @rooms.each do |room| %>
       <tr>
         <td>
+            <%= if room.property %>
 			<%= room.property.street_1 %><br />
 			<%= room.property.street_2 %><br />
 			<%= room.property.city %> <%= room.property.state %> <%= room.property.zip %>
+			<% end %>
 		</td>
 		<td><%= room.room_number %></td>
         <td><%= link_to 'Show', room %></td>
@@ -30,4 +32,5 @@
 
 <br>
 
-<%= link_to 'New Room', new_room_path %>
+<%= link_to 'New Room', new_room_path %> | 
+<%= link_to 'Search', rooms_search_path %>
