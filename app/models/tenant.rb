@@ -3,6 +3,8 @@ class Tenant < ActiveRecord::Base
   belongs_to :property
   belongs_to :room
   
+  attr_accessor :individual_name, :property_name, :room_name
+  
   def search
     scope = Tenant.scoped({})
     scope = scope.scoped :conditions => ["leased_signed = ?", leased_signed] unless leased_signed.blank?

@@ -4,6 +4,8 @@ class Tour < ActiveRecord::Base
   belongs_to :room
   belongs_to :property
   
+  attr_accessor :agent_name, :client_name, :room_name, :property_name
+  
   def search
     scope = Tour.scoped({})
     scope = scope.scoped :conditions => ["date = ?", date] unless date.blank?

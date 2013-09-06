@@ -1,3 +1,6 @@
+<%= content_for :jsIncludes do %>
+    <%= javascript_include_tag params[:controller] %>
+<% end %>
 <%= form_for(@lease) do |f| %>
   <% if @lease.errors.any? %>
     <div id="error_explanation">
@@ -12,7 +15,8 @@
   <% end %>
 	<br />
     <%= f.label :client, "Client: " %>
-    <%= f.collection_select(:client_id, Client.all, :id, :name) %>
+    <%= f.text_field :client_name %>
+    <%= f.hidden_field :client_id %>
 	<br />
     <%= f.label :rental_amount, "Rental Amount: " %>
     <%= f.text_field :rental_amount %>
@@ -43,7 +47,8 @@
     <%= f.text_field :referral_amount %>
   <br />
     <%= f.label :property, "Property: " %>
-   	<%= f.collection_select(:property_id, Property.all, :id, :address)%>
+    <%= f.text_field :property_name %>
+    <%= f.hidden_field :property_id %>
   <br />
     <%= f.label :comments %>
     <%= f.text_area :comments %>

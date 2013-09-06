@@ -74,6 +74,15 @@ class IndividualsController < ApplicationController
   end
   
   def auto_contacts
+    if params[:term] && (params[:term].length > 2)
+      users = Individual.search_by_name(params[:term])
+    else
+      users = Individual.all
+    end
+    list = users.map {|u| Hash[id: u.id, label: u.name + " (" + u.email + ")", name: u.name]}
+    respond_to do |format|
+      format.json { render json: list }
+    end
   end
 
   private

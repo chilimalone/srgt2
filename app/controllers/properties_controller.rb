@@ -72,6 +72,18 @@ class PropertiesController < ApplicationController
   def search_form
     render "search"
   end
+  
+  def auto_properties
+    if params[:term] && (params[:term].length > 2)
+      users = Property.search_by_address(params[:term])
+    else
+      users = Property.all
+    end
+    list = users.map {|u| Hash[id: u.id, label: u.address, name: u.address]}
+    respond_to do |format|
+      format.json { render json: list }
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

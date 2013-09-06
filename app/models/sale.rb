@@ -4,6 +4,8 @@ class Sale < ActiveRecord::Base
   belongs_to :broker, :class_name => "Individual"
   belongs_to :property
   
+  attr_accessor :agent_name, :buyer_name, :broker_name, :property_name
+  
   def search
     scope = Sale.scoped({})
     scope = scope.scoped :conditions => ["closing_date = ?", closing_date] unless closing_date.blank?

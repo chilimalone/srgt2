@@ -1,3 +1,6 @@
+<%= content_for :jsIncludes do %>
+    <%= javascript_include_tag params[:controller] %>
+<% end %>
 <%= form_for(@tour) do |f| %>
   <% if @tour.errors.any? %>
     <div id="error_explanation">
@@ -13,19 +16,23 @@
 
   <br />
     <%= f.label :agent, "Agent" %>
-    <%= f.collection_select(:agent_id, Agent.all, :id, :name) %>
+    <%= f.text_field :agent_name %>
+    <%= f.hidden_field :agent_id %>
   <br />
     <%= f.label :client %>
-    <%= f.collection_select(:client_id, Client.all, :id, :name) %>
+    <%= f.text_field :client_name %>
+    <%= f.hidden_field :client_id %>
   <br />
     <%= f.label :date %>
     <%= f.date_select :date %>
   <br />
     <%= f.label :property %>
-    <%= f.collection_select(:property_id, Property.all, :id, :address) %>
+    <%= f.text_field :property_name %>
+    <%= f.hidden_field :property_id %>
   <br />
     <%= f.label :room %>
-    <%= f.collection_select(:room_id, Room.all, :id, :room_number) %>
+    <%= f.text_field :room_name %>
+    <%= f.hidden_field :room_id %>
   <br />
     <%= f.label :comments %>
     <%= f.text_area :comments %>

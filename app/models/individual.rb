@@ -10,8 +10,13 @@ class Individual < ActiveRecord::Base
     "#{fname} #{lname}"
   end
   
+  def self.search_by_name(name)
+    name_condition = name + "%"
+    find(:all, :conditions => ['email LIKE ? OR fname LIKE ? OR lname LIKE ?', "%" + name_condition, name_condition, name_condition])
+  end
+  
   def search
-    scope = Client.scoped({})
+    scope = Individual.scoped({})
     scope = scope.scoped :conditions => ["fname LIKE ?", fname + "%"] unless fname.blank?
     scope = scope.scoped :conditions => ["lname LIKE ?", lname + "%"] unless lname.blank?
     scope = scope.scoped :conditions => ["phone LIKE ?", "%" + phone + "%"] unless phone.blank?
@@ -22,9 +27,5 @@ class Individual < ActiveRecord::Base
     scope = scope.scoped :conditions => ["zip LIKE ?", zip + "%"] unless zip.blank?
     scope = scope.scoped :conditions => ["email LIKE ?", "%" + email + "%"] unless email.blank?
     scope
-  end
-  
-  def self.short_search(query)
-    Client.where("fname LIKE ? or lname LIKE ? or email LIKE ?", query + "%", query + "%", "%" + query + "%")
   end
 end

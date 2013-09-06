@@ -1,3 +1,6 @@
+<%= content_for :jsIncludes do %>
+    <%= javascript_include_tag params[:controller] %>
+<% end %>
 <%= form_for(@room) do |f| %>
   <% if @room.errors.any? %>
     <div id="error_explanation">
@@ -13,7 +16,8 @@
 
   <br />
     <%= f.label :property, "Property: " %>
-    <%= f.collection_select(:property_id, Property.all, :id, :address) %>
+    <%= f.text_field :property_name %>
+    <%= f.hidden_field :property_id %>
   <br />
 	<%= f.label :room_number, "Room Number: " %>
 	<%= f.text_field :room_number %>

@@ -2,7 +2,7 @@ class Lease < ActiveRecord::Base
   belongs_to :agent
   belongs_to :client
   belongs_to :property
-  attr_accessor :agent_name
+  attr_accessor :agent_name, :client_name, :property_name
   
   def search
     scope = Lease.scoped({})

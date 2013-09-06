@@ -1,3 +1,6 @@
+<%= content_for :jsIncludes do %>
+    <%= javascript_include_tag params[:controller] %>
+<% end %>
 <%= form_for(@property) do |f| %>
   <% if @property.errors.any? %>
     <div id="error_explanation">
@@ -12,7 +15,8 @@
   <% end %>
   <br />
     <%= f.label :individual, "Contact: " %>
-    <%= f.collection_select(:individual_id, Individual.all, :id, :name) %>
+    <%= f.text_field :individual_name %>
+    <%= f.hidden_field :individual_id %>
   <br />
     <%= f.label :street_1, "Street 1: " %>
     <%= f.text_field :street_1 %>

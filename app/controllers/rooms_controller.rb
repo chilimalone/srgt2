@@ -72,6 +72,20 @@ class RoomsController < ApplicationController
   def search_form
     render "search"
   end
+  
+  def auto_rooms
+    if !params[:prop_id].blank?
+      users = Property.find(params[:prop_id]).rooms
+    elsif !params[:term].blank?
+      users = Room.search_by_number(params[:term])
+    else
+      users = Room.all
+    end
+    list = users.map {|u| Hash[id: u.id, label: u.room_number.to_s + " (" + u.property.address + ")", name: u.address]}
+    respond_to do |format|
+      format.json { render json: list }
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

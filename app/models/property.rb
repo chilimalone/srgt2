@@ -5,9 +5,15 @@ class Property < ActiveRecord::Base
   has_many :tenants
   has_many :tours
   has_many :sales
+  attr_accessor :individual_name
   
   def address
     "#{street_1} #{city} #{state}"
+  end
+  
+  def self.search_by_address(addr)
+    name_condition = "%" + addr + "%"
+    find(:all, :conditions => ['street_1 LIKE ? OR city LIKE ? OR state LIKE ?', name_condition, name_condition, name_condition])
   end
   
   def search

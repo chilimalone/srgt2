@@ -1,3 +1,6 @@
+<%= content_for :jsIncludes do %>
+    <%= javascript_include_tag params[:controller] %>
+<% end %>
 <%= form_for(@client) do |f| %>
   <% if @client.errors.any? %>
     <div id="error_explanation">
@@ -28,7 +31,8 @@
     <%= f.text_field :source %>
 	<br />
     <%= f.label :individual, "Contact: " %>
-	<%= f.collection_select(:individual_id, Individual.all, :id, :name) %>
+    <%= f.text_field :individual_name %>
+	<%= f.hidden_field :individual_id %>
 	<br />
     <%= f.label :comments, "Comments: " %>
     <%= f.text_area :comments %>

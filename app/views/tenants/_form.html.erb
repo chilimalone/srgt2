@@ -1,3 +1,6 @@
+<%= content_for :jsIncludes do %>
+    <%= javascript_include_tag params[:controller] %>
+<% end %>
 <%= form_for(@tenant) do |f| %>
   <% if @tenant.errors.any? %>
     <div id="error_explanation">
@@ -13,7 +16,8 @@
 
   <br />
     <%= f.label :individual, "Contact: " %>
-    <%= f.collection_select(:individual_id, Individual.all, :id, :name) %>
+    <%= f.text_field :individual_name %>
+    <%= f.hidden_field :individual_id %>
   <br />
     <%= f.label :leased_signed, "Lease Signed: " %>
     <%= f.date_select :leased_signed %>
@@ -22,10 +26,12 @@
     <%= f.date_select :lease_expired %>
   <br />
     <%= f.label :property, "Property: " %>
-    <%= f.collection_select(:property_id, Property.all, :id, :address) %>
+    <%= f.text_field :property_name %>
+    <%= f.hidden_field :property_id %>
   <br />
     <%= f.label :room, "Room: " %>
-    <%= f.collection_select(:room_id, Room.all, :id, :room_number) %>
+    <%= f.text_field :room_name %>
+    <%= f.hidden_field :room_id %>
   <br />
     <%= f.submit "Save", class: "submit" %>
 <% end %>

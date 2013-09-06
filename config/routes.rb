@@ -15,6 +15,7 @@ Srgt2::Application.routes.draw do
 
   get '/rooms/search', to: 'rooms#search_form'
   post '/rooms/search', to: 'rooms#search'
+  match '/rooms/autocomplete' => 'rooms#auto_rooms', via: [:get, :post]
   resources :rooms
 
   get '/sales/search', to: 'sales#search_form'
@@ -23,6 +24,7 @@ Srgt2::Application.routes.draw do
 
   get '/properties/search', to: 'properties#search_form'
   post '/properties/search', to: 'properties#search'
+  match '/properties/autocomplete' => 'properties#auto_properties', via: [:get, :post]
   resources :properties
 
   post '/agents/login', to: 'agents#login'

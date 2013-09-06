@@ -16,3 +16,6 @@
   <br />
     <%= f.submit "Save", class: "submit" %>
 <% end %>
+<%= content_for :jsIncludes do %>
+    <%= javascript_include_tag params[:controller] %>
+<% end %>

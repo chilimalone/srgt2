@@ -100,7 +100,7 @@ class AgentsController < ApplicationController
   end
   
   def auto_agents
-    if params[:term]
+    if params[:term] && (params[:term].length > 2)
       users = Agent.search_by_name(params[:term])
     else
       users = Agent.all

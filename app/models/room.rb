@@ -2,6 +2,11 @@ class Room < ActiveRecord::Base
   belongs_to :property
   has_many :tours
   has_many :tenants
+  attr_accessor :property_name
+  
+  def self.search_by_number(num)
+    find(:all, :conditions => ["room_number >= ?", num])
+  end
   
   def search
     scope = Room.scoped({})

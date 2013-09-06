@@ -74,6 +74,15 @@ class ClientsController < ApplicationController
   end
   
   def auto_clients
+    if params[:term] && (params[:term].length > 2)
+      users = Client.search_by_name(params[:term])
+    else
+      users = Client.all
+    end
+    list = users.map {|u| Hash[id: u.id, label: u.name + " (" + u.company + ")", name: u.name]}
+    respond_to do |format|
+      format.json { render json: list }
+    end
   end
 
   private
