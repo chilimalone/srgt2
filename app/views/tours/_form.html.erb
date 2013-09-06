@@ -1,5 +1,5 @@
 <%= content_for :jsIncludes do %>
-    <%= javascript_include_tag params[:controller] %>
+    <%= javascript_include_tag params[:controller], "data-turbolinks-track" => true %>
 <% end %>
 <%= form_for(@tour) do |f| %>
   <% if @tour.errors.any? %>
