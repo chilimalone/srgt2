@@ -13,9 +13,16 @@
 <%= f.label :source, "Source: " %>
 <%= f.text_field :source %>
 <br />
-<div class="subfields">
+<button id="clients_contact_filter_button" type='button'>Filter by Contact</button>
+<div class="subfields" id="clients_contact_filter">
 Contact filter: <br />
 <%= f.fields_for :individual do |ind| %>
 	<%= render :partial => '/individuals/fields', :locals => { :f => ind } %>
 <% end %>
 </div>
+
+<script>
+$('#clients_contact_filter_button').click(function() {
+	$('#clients_contact_filter').slideToggle()
+})
+</script>

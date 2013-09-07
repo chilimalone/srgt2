@@ -4,15 +4,27 @@
   <%= f.label :lease_expired, "Lease Expired: " %>
   <%= f.date_select :lease_expired, :include_blank => true %>
 <br />
-<div class="subfields">
+<button id="tenants_contact_filter_button" type='button'>Filter by Contacts</button>
+<div class="subfields" id='tenants_contact_filter'>
 Contact filter <br />
   <%= f.fields_for :individual do |ind| %>
 	<%= render :partial => '/individuals/fields', :locals => { :f => ind } %>
   <% end %>
 </div>
-<div class="subfields">
+<br />
+<button id="tenants_room_filter_button" type='button'>Filter by Rooms</button>
+<div class="subfields" id='tenants_room_filter'>
 Room filter <br />
   <%= f.fields_for :room do |ind| %>
 	<%= render :partial => '/rooms/search_fields', :locals => { :f => ind } %>
   <% end %>
 </div>
+<script>
+$('#tenants_contact_filter_button').click(function() {
+	$('#tenants_contact_filter').slideToggle()
+})
+
+$('#tenants_room_filter_button').click(function() {
+	$('#tenants_room_filter').slideToggle()
+})
+</script>

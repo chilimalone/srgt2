@@ -13,27 +13,51 @@
   <%= f.label :office_number, "Office number: " %>
   <%= f.text_field :office_number %>
 <br />
-<div class="subfields">
+<button id="sales_buyer_filter_button" type='button'>Filter by Buyer</button>
+<div class="subfields" id="sales_buyer_filter">
 Buyer filter <br />
   <%= f.fields_for :buyer do |bu| %>
 	<%= render :partial => '/individuals/fields', :locals => { :f => bu } %>
   <% end %>
 </div>
-<div class="subfields">
+<br />
+<button id="sales_broker_filter_button" type='button'>Filter by Broker</button>
+<div class="subfields" id="sales_broker_filter">
 Broker filter <br />
   <%= f.fields_for :broker do |br| %>
 	<%= render :partial => '/individuals/fields', :locals => { :f => br } %>
   <% end %>
 </div>
-<div class="subfields">
+<br />
+<button id="sales_agent_filter_button" type='button'>Filter by Agent</button>
+<div class="subfields" id="sales_agent_filter">
 Agent filter: <br />
   <%= f.fields_for :agent do |ag| %>
     <%= render :partial => '/agents/search_fields', :locals => { :f => ag } %>
   <% end %>
 </div>
-<div class="subfields">
+<br />
+<button id="sales_property_filter_button" type='button'>Filter by Property</button>
+<div class="subfields" id="sales_property_filter">
 Property filter: <br />
   <%= f.fields_for :property do |pr| %>
 	<%= render :partial => '/properties/search_fields', :locals => { :f => pr } %>
   <% end %>
 </div>
+<script>
+$('#sales_buyer_filter_button').click(function() {
+	$('#sales_buyer_filter').slideToggle()
+})
+
+$('#sales_broker_filter_button').click(function() {
+	$('#sales_broker_filter').slideToggle()
+})
+
+$('#sales_agent_filter_button').click(function() {
+	$('#sales_agent_filter').slideToggle()
+})
+
+$('#sales_property_filter_button').click(function() {
+	$('#sales_property_filter').slideToggle()
+})
+</script>

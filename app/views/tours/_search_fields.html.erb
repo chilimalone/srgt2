@@ -4,21 +4,39 @@
   <%= f.label :comments %>
   <%= f.text_area :comments %>
 <br />
-<div class="subfields">
+<button id="tours_agent_filter_button" type='button'>Filter by Agents</button>
+<div class="subfields" id="tours_agent_filter">
 Agent filter: <br />
   <%= f.fields_for :agent do |ag| %>
     <%= render :partial => '/agents/search_fields', :locals => { :f => ag } %>
   <% end %>
 </div>
-<div class="subfields">
+<br />
+<button id="tours_contact_filter_button" type='button'>Filter by Contacts</button>
+<div class="subfields" id="tours_contact_filter">
 Contact filter: <br />
 	<%= f.fields_for :client do |cl| %>
 	  <%= render :partial => '/clients/search_fields', :locals => { :f => cl } %>
 	<% end %>
 </div>
-<div class="subfields">
+<br />
+<button id="tours_room_filter_button" type='button'>Filter by Rooms</button>
+<div class="subfields" id="tours_room_filter">
 Room filter: <br />
   <%= f.fields_for :room do |ind| %>
 	<%= render :partial => '/rooms/search_fields', :locals => { :f => ind } %>
   <% end %>
 </div>
+<script>
+$('#tours_agent_filter_button').click(function () {
+	$('#tours_agent_filter').slideToggle()
+})
+
+$('#tours_contact_filter_button').click(function() {
+	$('#tours_contact_filter').slideToggle()
+})
+
+$('#tours_room_filter_button').click(function() {
+	$('#tours_room_filter').slideToggle()
+})
+</script>

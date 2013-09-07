@@ -299,9 +299,9 @@ code, pre        { background-color:#FF9; padding:2px 0px; margin:4px 25px; font
 /********* Search *********/
 .subfields {
 	border: solid 1px #000;
+	display: none;
 	padding: 10px;
 }
-
 
 .active a {
 	padding: 3px 20px;
