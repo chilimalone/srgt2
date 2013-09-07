@@ -19,7 +19,7 @@
     <%= f.text_field :lname %>
   <br />
     <% if current_agent %>
-      <% if not current_agent.isAdmin) %>
+      <% if not current_agent.isAdmin %>
         <%= f.label :old_password, "Old Password: "%>
 	    <%= f.password_field :old_password %>
         <br />
