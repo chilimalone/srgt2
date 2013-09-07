@@ -15,7 +15,7 @@
   <tbody>
     <% @clients.each do |client| %>
       <tr>
-        <td><%= if client.individual %><%= link_to "#{client.individual.name}", client %><% end %></td>
+        <td><% if client.individual %><%= link_to "#{client.individual.name}", client %><% end %></td>
         <td><%= client.date_received %></td>
         <td><%= client.file_number %></td>
         <td><%= client.company %></td>

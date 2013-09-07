@@ -15,7 +15,7 @@
     <% @rooms.each do |room| %>
       <tr>
         <td>
-            <%= if room.property %>
+            <% if room.property %>
 			<%= room.property.street_1 %><br />
 			<%= room.property.street_2 %><br />
 			<%= room.property.city %> <%= room.property.state %> <%= room.property.zip %>

@@ -17,15 +17,15 @@
   <tbody>
     <% @tenants.each do |tenant| %>
       <tr>
-        <td><%= if tenant.individual %><%= tenant.individual.name %><% end %></td>
+        <td><% if tenant.individual %><%= tenant.individual.name %><% end %></td>
         <td>
-            <%= if tenant.property %>
+            <% if tenant.property %>
         	<%= tenant.property.street_1 %><br />
 			<%= tenant.property.street_2 %><br />
 			<%= tenant.property.city %> <%= tenant.property.state %> <%= tenant.property.zip %>
 			<% end %>
         </td>
-        <td><%= if tenant.room %><%= tenant.room.room_number %><% end %></td>
+        <td><% if tenant.room %><%= tenant.room.room_number %><% end %></td>
         <td><%= tenant.leased_signed %></td>
 		<td><%= tenant.lease_expired %></td>
         <td><%= link_to 'Show', tenant %></td>

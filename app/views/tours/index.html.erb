@@ -17,17 +17,17 @@
   <tbody>
     <% @tours.each do |tour| %>
       <tr>
-        <td><%= tour.client.name %></td>
+        <td><% if tour.client %><%= tour.client.name %><% end %></td>
         <td>
-            <%= if tour.property %>
+            <% if tour.property %>
 			<%= tour.property.street_1 %><br />
 			<%= tour.property.street_2 %><br />
 			<%= tour.property.city %> <%= tour.property.state %> <%= tour.property.zip %>
 			<% end %>
 		</td>
-        <td><%= if tour.room %><%= tour.room.room_number %><% end %></td>
+        <td><% if tour.room %><%= tour.room.room_number %><% end %></td>
         <td><%= tour.date %></td>
-        <td><%= if tour.agent %><%= tour.agent.fname %> <%= tour.agent.lname %><% end %></td>
+        <td><% if tour.agent %><%= tour.agent.fname %> <%= tour.agent.lname %><% end %></td>
         <td><%= link_to 'Show', tour %></td>
         <td><%= link_to 'Edit', edit_tour_path(tour) %></td>
         <td><%= link_to 'Destroy', tour, method: :delete, data: { confirm: 'Are you sure?' } %></td>

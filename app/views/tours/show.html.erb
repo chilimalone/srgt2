@@ -2,14 +2,14 @@
 
 <p>
   <strong>Agent:</strong>
-  <%= if @tour.agent %>
+  <% if @tour.agent %>
   <%= link_to "#{@tour.agent.name}", agent_path(@sale.agent) %>
   <% end %>
 </p>
 
 <p>
   <strong>Client:</strong>
-  <%= if @our.client %>
+  <% if @our.client %>
   <%= link_to "#{@tour.client.name}", client_path(@tour.client) %>
   <% end %>
 </p>
@@ -21,14 +21,14 @@
 
 <p>
   <strong>Room:</strong>
-  <%= if @tour.room %>
+  <% if @tour.room %>
   <%= link_to "#{@tour.room.room_number}", room_path(@tour.room) %>
   <% end %>
 </p>
 
 <p>
   <strong>Property:</strong>
-  <%= if @tour.property %>
+  <% if @tour.property %>
   <%= link_to "#{@tour.property.address}", property_path(@tour.property) %>
   <% end %>
 </p>

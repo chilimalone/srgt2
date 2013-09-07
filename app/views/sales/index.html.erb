@@ -18,16 +18,16 @@
     <% @sales.each do |sale| %>
       <tr>
         <td>
-        <%= if sale.buyer %><%= sale.buyer.name %><% end %></td>
+        <% if sale.buyer %><%= sale.buyer.name %><% end %></td>
         <td>
             <%= if sale.property %>
 			<%= sale.property.street_1 %><br />
 			<%= sale.property.street_2 %><br />
 			<%= sale.property.city %> <%= sale.property.state %> <%= sale.property.zip %></td>
 			<% end %>
-        <td><%= if sale.broker %><%= sale.broker.name %><% end %></td>
+        <td><% if sale.broker %><%= sale.broker.name %><% end %></td>
         <td><%= sale.closing_date %></td>
-        <td><%= if sale.agent %><%= sale.agent.name %><% end %></td>
+        <td><% if sale.agent %><%= sale.agent.name %><% end %></td>
         <td><%= link_to 'Show', sale %></td>
         <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
         <td><%= link_to 'Delete', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
