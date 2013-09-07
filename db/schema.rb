@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130901150629) do
+ActiveRecord::Schema.define(version: 20130906162022) do
 
   create_table "agents", force: true do |t|
     t.string   "fname"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20130901150629) do
     t.string   "username"
     t.string   "password_hash"
     t.string   "password_salt"
+    t.boolean  "isAdmin",       default: false
   end
 
   create_table "clients", force: true do |t|

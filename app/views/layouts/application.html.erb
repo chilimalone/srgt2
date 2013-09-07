@@ -9,6 +9,7 @@
 </head>
 <body>
 	<div id="wrapper">
+	    <% if flash[:big_errors] %><div class="error"><%= flash[:big_errors] %></div> <% end %>
 		<div id="top">
 			<div id="logo">
 				<%= link_to(image_tag("logo.jpg", :alt => "home image", :title => "Click here to return home"), "/") %>
@@ -19,7 +20,11 @@
 				  <br />
 				  <%= link_to "Profile", agent_path(current_agent) %> | 
 				  <%= link_to "Sign Out", agents_logout_path %>
+				  <% if current_agent.isAdmin %>
+				    | <%= link_to "Manage Agents", agents_path %>
+				  <% end %>
 				<% else %>
+				  <% if flash[:login_errors] %><div class="error"><%= flash[:login_errors] %></div><% end %>
 				  <%= form_for(Agent.new, :url => { :controller => 'agents', :action => 'login' }) do |f| %>
 				    <%= f.label :username, "Username: " %>
 				    <%= f.text_field :username %>
@@ -38,7 +43,7 @@
 				<li><%= link_to "TOURS", tours_path %>
 					<ul>
 						<li><%= link_to "New Tour", new_tour_path %></li>
-						<li><%= link_to "Search", tours_path %></li>
+						<li><%= link_to "Search", tours_search_path %></li>
 					</ul>
 				</li>
 				<li><%= link_to "PROPERTIES", properties_path %>

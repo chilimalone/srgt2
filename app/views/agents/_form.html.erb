@@ -26,6 +26,11 @@
   <br />
 	<%= f.label :password_confirmation, "Confirm password: "%>
 	<%= f.password_field :password_confirmation %>
+  <% if current_agent and current_agent.isAdmin %>
+    <br />
+    <%= f.label :isAdmin, "Check to make Admin" %>
+    <%= f.checkbox_field :isAdmin %>
+  <% end %>
   <br />
     <%= f.submit "Save", class: "submit" %>
   </div>

@@ -1,10 +1,18 @@
 class AgentsController < ApplicationController
   before_action :set_agent, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user, only: [:index, :show, :edit, :update, :destroy]
 
   # GET /agents
   # GET /agents.json
   def index
     @agents = Agent.all
+  end
+  
+  def authenticate_user
+    if current_agent.nil?
+      flash[:big_errors] = 'You must be signed in to view that page.'
+      redirect_to root_path
+    end
   end
 
   # GET /agents/1
@@ -29,6 +37,8 @@ class AgentsController < ApplicationController
     
     if user
       session[:currentAgentId] = user.id
+    else
+      flash[:login_errors] = "Authentication failed. Try again."
     end
     redirect_to root_path
   end
@@ -58,9 +68,13 @@ class AgentsController < ApplicationController
   # PATCH/PUT /agents/1
   # PATCH/PUT /agents/1.json
   def update
-    temp_agent = Agent.authenticate(@agent.username, params[:agent][:old_password])
-    if temp_agent.nil?
-      @agent.errors[:old_password] = "Old password is incorrect"
+    if current_agent.isAdmin
+      temp_agent = Agent.new
+    else
+      temp_agent = Agent.authenticate(@agent.username, params[:agent][:old_password])
+      if temp_agent.nil?
+        @agent.errors[:old_password] = "Old password is incorrect"
+      end
     end
     # Make sure validation passes if password is not updated.
     if params[:agent][:password].blank? && params[:agent][:password_confirmation].blank?
@@ -119,6 +133,6 @@ class AgentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def agent_params
-      params.require(:agent).permit(:fname, :lname, :username, :password, :password_confirmation, :old_password)
+      params.require(:agent).permit(:fname, :lname, :username, :password, :password_confirmation, :old_password, :isAdmin)
     end
 end
