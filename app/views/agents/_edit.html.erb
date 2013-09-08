@@ -25,7 +25,8 @@
         <br />
       <% else %>
         <%= f.label :isAdmin, "Promote to admin: " %>
-        <%= f.checkbox :isAdmin %>
+        <%= f.check_box :isAdmin %>
+        <br />
       <% end %>
     <% end %>
 	<%= f.label :password, "New Password: "%>
