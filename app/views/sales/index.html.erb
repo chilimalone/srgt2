@@ -20,7 +20,7 @@
         <td>
         <% if sale.buyer %><%= sale.buyer.name %><% end %></td>
         <td>
-            <%= if sale.property %>
+            <% if sale.property %>
 			<%= sale.property.street_1 %><br />
 			<%= sale.property.street_2 %><br />
 			<%= sale.property.city %> <%= sale.property.state %> <%= sale.property.zip %></td>
