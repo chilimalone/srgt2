@@ -9,4 +9,11 @@ class ApplicationController < ActionController::Base
   def current_agent
     @current_agent ||= Agent.find_by_id(session[:currentAgentId]) if session[:currentAgentId]
   end
+  
+  def authenticate_user
+    if current_agent.nil?
+      flash[:big_errors] = 'You must be signed in to view that page.'
+      redirect_to root_path
+    end
+  end
 end

@@ -1,5 +1,6 @@
 class LeasesController < ApplicationController
   before_action :set_lease, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user
 
   # GET /leases
   # GET /leases.json

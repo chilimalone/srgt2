@@ -7,13 +7,6 @@ class AgentsController < ApplicationController
   def index
     @agents = Agent.all
   end
-  
-  def authenticate_user
-    if current_agent.nil?
-      flash[:big_errors] = 'You must be signed in to view that page.'
-      redirect_to root_path
-    end
-  end
 
   # GET /agents/1
   # GET /agents/1.json

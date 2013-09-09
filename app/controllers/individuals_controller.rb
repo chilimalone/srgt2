@@ -1,5 +1,6 @@
 class IndividualsController < ApplicationController
   before_action :set_individual, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user
 
   # GET /individuals
   # GET /individuals.json
