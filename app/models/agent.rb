@@ -17,7 +17,7 @@ class Agent < ActiveRecord::Base
   
   def self.search_by_name(name)
     name_condition = name + "%"
-    find(:all, :conditions => ['username LIKE ? OR fname LIKE ? OR lname LIKE ?', name_condition, name_condition, name_condition])
+    find(:all, :conditions => ['username LIKE ? OR concat(fname, " ", lname)', name_condition, "%" + name_condition])
   end
   
   def name

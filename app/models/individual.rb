@@ -11,8 +11,8 @@ class Individual < ActiveRecord::Base
   end
   
   def self.search_by_name(name)
-    name_condition = name + "%"
-    find(:all, :conditions => ['email LIKE ? OR fname LIKE ? OR lname LIKE ?', "%" + name_condition, name_condition, name_condition])
+    name_condition = "%" + name + "%"
+    find(:all, :conditions => ['email LIKE ? OR fname || \' \' || lname LIKE ?', name_condition, name_condition])
   end
   
   def search
