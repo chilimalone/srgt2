@@ -15,6 +15,10 @@
   <% end %>
 
 	<br />
+	<%= f.label :individual, "Contact: " %>
+    <%= f.text_field :individual_name %>
+	<%= f.hidden_field :individual_id %>
+	<br />
     <%= f.label :company, "Company: " %>
     <%= f.text_field :company %>
   	<br />
@@ -29,10 +33,6 @@
 	<br />
     <%= f.label :source, "Source: " %>
     <%= f.text_field :source %>
-	<br />
-    <%= f.label :individual, "Contact: " %>
-    <%= f.text_field :individual_name %>
-	<%= f.hidden_field :individual_id %>
 	<br />
     <%= f.label :comments, "Comments: " %>
     <%= f.text_area :comments %>
