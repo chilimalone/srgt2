@@ -3,7 +3,7 @@
 <p>
   <strong>Agent:</strong>
   <% if @tour.agent %>
-  <%= link_to "#{@tour.agent.name}", agent_path(@sale.agent) %>
+  <%= link_to "#{@tour.agent.name}", agent_path(@tour.agent) %>
   <% end %>
 </p>
 
