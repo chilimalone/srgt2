@@ -82,7 +82,7 @@ class RoomsController < ApplicationController
     else
       users = Room.all
     end
-    list = users.map {|u| Hash[id: u.id, label: u.room_number.to_s + " (" + u.property.address + ")", name: u.address]}
+    list = users.map {|u| Hash[id: u.id, label: u.room_number.to_s + " (" + u.property.address + ")", name: u.property.address]}
     respond_to do |format|
       format.json { render json: list }
     end
