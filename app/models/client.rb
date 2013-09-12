@@ -5,7 +5,11 @@ class Client < ActiveRecord::Base
   attr_accessor :individual_name
   
   def name
-    "#{individual.fname} #{individual.lname}"
+    if (individual)
+      "#{individual.fname} #{individual.lname}"
+    else
+      ""
+    end
   end
   
   def self.search_by_name(name)

@@ -4,7 +4,7 @@ class Individual < ActiveRecord::Base
   has_many :properties
   has_many :sales
   
-  validates :email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+  validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   
   def name
     "#{fname} #{lname}"
