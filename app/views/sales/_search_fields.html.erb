@@ -2,7 +2,7 @@
   <%= f.text_field :hear %>
 <br />
   <%= f.label :closing_date, "Closing date: " %>
-  <%= f.date_select :closing_date %>
+  <%= f.date_select :closing_date, :include_blank => true %>
 <br />
   <%= f.label :company, "Company: " %>
   <%= f.text_field :company %>

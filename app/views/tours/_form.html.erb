@@ -27,7 +27,7 @@
     <%= f.date_select :date %>
   <br />
     <%= f.label :dropped_date, "Dropped date: " %>
-    <%= f.date_select :dropped_date %>
+    <%= f.date_select :dropped_date, :include_blank => true %>
   <br />
     <%= f.label :room, "Property: " %>
     <%= f.text_field :room_name %>

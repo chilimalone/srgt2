@@ -28,8 +28,10 @@ class Client < ActiveRecord::Base
     scope = scope.scoped :conditions => ["date_received = ?", "'" + date_received.to_s + "'"] unless date_received.blank?
     if (!individual.blank?)
       possible_people = individual.search
-      condition = possible_people.map { |p| p.id.to_s }.join("', '")
-      scope = scope.scoped :conditions => ["individual_id IN ('" + condition + "')"]
+      if possible_people.size != Individual.count
+        condition = possible_people.map { |p| p.id.to_s }.join("', '")
+        scope = scope.scoped :conditions => ["individual_id IN ('" + condition + "')"]
+      end
     end
     scope
   end

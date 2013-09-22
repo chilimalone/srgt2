@@ -11,13 +11,17 @@ class Tenant < ActiveRecord::Base
     scope = scope.scoped :conditions => ["welcome_home = ?", welcome_home] unless welcome_home.blank?
     if (!room.blank?)
       possible_properties = room.search
-      condition_p = possible_properties.map { |p| p.id.to_s }.join("', '")
-      scope = scope.scoped :conditions => ["room_id IN ('" + condition_p + "')"]
+      if possible_properties.size != Room.count
+        condition_p = possible_properties.map { |p| p.id.to_s }.join("', '")
+        scope = scope.scoped :conditions => ["room_id IN ('" + condition_p + "')"]
+      end
     end
     if (!individual.blank?)
       possible_buyers = individual.search
-      condition_bu = possible_buyers.map { |p| p.id.to_s }.join("', '")
-      scope = scope.scoped :conditions => ["individual_id IN ('" + condition_bu + "')"]
+      if possible_buyers.size != Individual.count
+        condition_bu = possible_buyers.map { |p| p.id.to_s }.join("', '")
+        scope = scope.scoped :conditions => ["individual_id IN ('" + condition_bu + "')"]
+      end
     end
     scope
   end

@@ -18,13 +18,17 @@ class Room < ActiveRecord::Base
     scope = scope.scoped :conditions => ["room_number LIKE ?", room_number] unless room_number.blank?
     if (!property.blank?)
       possible_properties = property.search
-      condition_p = possible_properties.map { |p| p.id.to_s }.join("', '")
-      scope = scope.scoped :conditions => ["property_id IN ('" + condition_p + "')"]
+      if possible_properties.size != Property.count
+        condition_p = possible_properties.map { |p| p.id.to_s }.join("', '")
+        scope = scope.scoped :conditions => ["property_id IN ('" + condition_p + "')"]
+      end
     end
     if (!individual.blank?)
       possible_people = individual.search
-      condition = possible_people.map { |p| p.id.to_s }.join("', '")
-      scope = scope.scoped :conditions => ["individual_id IN ('" + condition + "')"]
+      if possible_people.size != Individual.count
+        condition = possible_people.map { |p| p.id.to_s }.join("', '")
+        scope = scope.scoped :conditions => ["individual_id IN ('" + condition + "')"]
+      end
     end
     scope
   end

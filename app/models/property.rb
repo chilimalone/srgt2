@@ -9,7 +9,7 @@ class Property < ActiveRecord::Base
   
   def self.search_by_address(addr)
     name_condition = "%" + addr + "%"
-    find(:all, :conditions => ['street_1 || \' \' city || \' \' || state) LIKE ?', name_condition])
+    find(:all, :conditions => ['(street_1 || \' \' || city || \' \' || state) LIKE ?', name_condition])
   end
   
   def search

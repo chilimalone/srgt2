@@ -18,6 +18,7 @@ class PropertiesController < ApplicationController
     @property = Property.new
     room = @property.rooms.build
     room.room_number = " "
+    @property
   end
 
   # GET /properties/1/edit
@@ -32,6 +33,8 @@ class PropertiesController < ApplicationController
   # POST /properties
   # POST /properties.json
   def create
+    @property = Property.new(property_params)
+    
     respond_to do |format|
       if @property.save
         format.html { redirect_to @property, notice: 'Property was successfully created.' }

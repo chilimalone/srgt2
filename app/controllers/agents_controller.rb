@@ -65,7 +65,6 @@ class AgentsController < ApplicationController
     @agent.req_password = true
     if current_agent.isAdmin
       temp_agent = Agent.new
-      @agent.req_password = false
     else
       temp_agent = Agent.authenticate(@agent.username, params[:agent][:old_password])
       if temp_agent.nil?
@@ -75,6 +74,8 @@ class AgentsController < ApplicationController
     # Make sure validation passes if password is not updated.
     if params[:agent][:password].blank? && params[:agent][:password_confirmation].blank?
       @agent.req_password = false
+      params[:agent][:password] = nil
+      params[:agent][:password_confirmation] = nil
     end
     respond_to do |format|
       if ((!temp_agent.nil?) && @agent.update(agent_params))

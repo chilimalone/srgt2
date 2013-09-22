@@ -15,9 +15,9 @@ Agent filter: <br />
   <% end %>
 </div>
 <br />
-<button id="tours_contact_filter_button" type='button'>Filter by Contacts</button>
+<button id="tours_contact_filter_button" type='button'>Filter by Client</button>
 <div class="subfields" id="tours_contact_filter">
-Contact filter: <br />
+Client filter: <br />
 	<%= f.fields_for :client do |cl| %>
 	  <%= render :partial => '/clients/search_fields', :locals => { :f => cl } %>
 	<% end %>

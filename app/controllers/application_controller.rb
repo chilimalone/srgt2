@@ -18,27 +18,45 @@ class ApplicationController < ActionController::Base
   end
   
   def createClient(params)
-    idv = Individual.new(individuals_params(params[:client][:individual]))
-    cl = Client.new(clients_params(params[:client]))
-    cl.individual = idv
+    params[:client] = check_params(params[:client])
+    return nil if params[:client].blank?
+    ci = clients_params(params[:client])
+    ci.individual = nil
+    ci.individual = individuals_params(params[:client][:individual]) unless params[:client][:individual].blank?
     return cl
   end
   
   def createRoom(params)
-    prp = Property.new(propertys_params(params[:room][:property]))
-    idv = Individual.new(individuals_params(params[:room][:individual]))
+    params[:room] = check_params(params[:room])
+    return nil if params[:room].blank?
     rm = Room.new(rooms_params(params[:room]))
-    rm.individual = idv
-    rm.property = prp
+    rm.property = nil
+    rm.individual = nil
+    rm.property = Property.new(propertys_params(params[:room][:property])) unless params[:room][:property].blank?
+    rm.individual = Individual.new(individuals_params(params[:room][:individual])) unless params[:room][:individual].blank?
     return rm
   end
   
   def createAgent(params)
+    params[:agent] = check_params(params[:agent])
+    return nil if params[:agent].blank?
     return Agent.new(agents_params(params[:agent]))
   end
   
   def createIndividual(params)
+    params[:individual] = check_params(params[:individual])
+    return nil if params[:individual].blank?
     return Individual.new(individuals_params(params[:individual]))
+  end
+  
+  def check_params(param_array)
+    param_array.each do |k, v|
+      if v.is_a?(Hash)
+        v = check_params(v)
+      end
+      param_array[k] = nil if v.blank?
+    end
+    return param_array
   end
   
   def clients_params(param_array)

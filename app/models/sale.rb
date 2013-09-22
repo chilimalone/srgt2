@@ -12,23 +12,31 @@ class Sale < ActiveRecord::Base
     scope = scope.scoped :conditions => ["hear LIKE ?", hear] unless hear.blank?
     if (!agent.blank?)
       possible_agents = agent.search
-      condition_a = possible_agents.map { |p| p.id.to_s }.join("', '")
-      scope = scope.scoped :conditions => ["agent_id IN ('" + condition_a + "')"]
+      if possible_agents.size != Agent.count
+        condition_a = possible_agents.map { |p| p.id.to_s }.join("', '")
+        scope = scope.scoped :conditions => ["agent_id IN ('" + condition_a + "')"]
+      end
     end
     if (!room.blank?)
       possible_properties = room.search
-      condition_p = possible_properties.map { |p| p.id.to_s }.join("', '")
-      scope = scope.scoped :conditions => ["room_id IN ('" + condition_p + "')"]
+      if possible_properties.size != Room.count
+        condition_p = possible_properties.map { |p| p.id.to_s }.join("', '")
+        scope = scope.scoped :conditions => ["room_id IN ('" + condition_p + "')"]
+      end
     end
     if (!buyer.blank?)
       possible_buyers = buyer.search
-      condition_bu = possible_buyers.map { |p| p.id.to_s }.join("', '")
-      scope = scope.scoped :conditions => ["buyer_id IN ('" + condition_bu + "')"]
+      if possible_buyers.size != Individual.count
+        condition_bu = possible_buyers.map { |p| p.id.to_s }.join("', '")
+        scope = scope.scoped :conditions => ["buyer_id IN ('" + condition_bu + "')"]
+      end
     end
     if (!broker.blank?)
       possible_brokers = broker.search
-      condition_br = possible_brokers.map { |p| p.id.to_s }.join("', '")
-      scope = scope.scoped :conditions => ["broker_id IN ('" + condition_br + "')"]
+      if possible_brokers.size != Individual.count
+        condition_br = possible_brokers.map { |p| p.id.to_s }.join("', '")
+        scope = scope.scoped :conditions => ["broker_id IN ('" + condition_br + "')"]
+      end
     end
     scope
   end
