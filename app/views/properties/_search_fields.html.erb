@@ -1,8 +1,8 @@
+  <%= f.label :name, "Property Name: " %>
+  <%= f.text_field :name %>
+<br />
   <%= f.label :street_1, "Street 1: " %>
   <%= f.text_field :street_1 %>
-<br />
-  <%= f.label :street_2, "Street 2: " %>
-  <%= f.text_field :street_2 %>
 <br />
   <%= f.label :city, "City: " %>
   <%= f.text_field :city %>
@@ -16,15 +16,3 @@
   <%= f.label :notes, "Notes" %>
   <%= f.text_area :notes %>
 <br />
-<button id="properties_contact_filter_button" type='button'>Filter by Contact</button>
-<div class="subfields" id="properties_contact_filter">
-Owner filter <br />
-  <%= f.fields_for :individual do |ind| %>
-	<%= render :partial => '/individuals/fields', :locals => { :f => ind } %>
-  <% end %>
-</div>
-<script>
-$('#properties_contact_filter_button').click(function() {
-	$('#properties_contact_filter').slideToggle()
-})
-</script>

@@ -4,7 +4,8 @@
   <thead>
     <tr>
       <th>Property Address</th>
-	  <th>Room Number</th>
+	  <th>Unit</th>
+	  <th>Owner</th>
       <th></th>
       <th></th>
       <th></th>
@@ -21,6 +22,7 @@
 			<% end %>
 		</td>
 		<td><%= room.room_number %></td>
+		<td><% if room.individual %><%= room.individual.name %><% end %></td>
         <td><%= link_to 'Show', room %></td>
         <td><%= link_to 'Edit', edit_room_path(room) %></td>
         <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -20,10 +20,12 @@
         <td>
         <% if sale.buyer %><%= sale.buyer.name %><% end %></td>
         <td>
-            <% if sale.property %>
-			<%= sale.property.street_1 %><br />
-			<%= sale.property.street_2 %><br />
-			<%= sale.property.city %> <%= sale.property.state %> <%= sale.property.zip %></td>
+            <% if sale.room %>
+			<%= sale.room.property.street_1 %><br />
+			<% if not sale.room.room_number.blank? %>
+			  <%= sale.room.property.room_number %><br />
+			<% end %>
+			<%= sale.room.property.city %> <%= sale.room.property.state %> <%= sale.room.property.zip %></td>
 			<% end %>
         <td><% if sale.broker %><%= sale.broker.name %><% end %></td>
         <td><%= sale.closing_date %></td>

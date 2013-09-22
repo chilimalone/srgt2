@@ -8,7 +8,14 @@
 </p>
 
 <p>
-  <strong>Room Number:</strong>
+    <strong>Owner: </strong>
+    <% if @room.individual %>
+    <%= link_to "#{@room.individual.name}", individual_path(@room.individual) %>
+    <% end %>
+</p>
+
+<p>
+  <strong>Street 2/Unit:</strong>
   <%= @room.room_number %>
 </p>
 

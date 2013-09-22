@@ -1,4 +1,4 @@
-  <%= f.label :room_number, "Room Number: " %>
+  <%= f.label :room_number, "Street 2: " %>
   <%= f.text_field :room_number %>
 <br />
   <%= f.label :comments, "Comments: " %>
@@ -11,8 +11,19 @@ Property filter: <br />
 	<%= render :partial => '/properties/search_fields', :locals => { :f => pr } %>
   <% end %>
 </div>
+<br />
+<button id="rooms_individual_filter_button" type='button'>Filter by Owner</button>
+<div class="subfields" id="rooms_individual_filter">
+Owner filter: <br />
+  <%= f.fields_for :individual do |i| %>
+    <%= render :partial => '/individual/search_fields', :locals => { :f => i } %>
+  <% end %>
+</div>
 <script>
 $('#rooms_property_filter_button').click(function() {
 	$('#rooms_property_filter').slideToggle()
+})
+$('#rooms_individual_filter_button').click(function() {
+    $('#rooms_individual_filter').slideToggle()
 })
 </script>

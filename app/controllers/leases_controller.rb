@@ -20,6 +20,15 @@ class LeasesController < ApplicationController
 
   # GET /leases/1/edit
   def edit
+    if @lease.client
+      @lease.client_name = @lease.client.name
+    end
+    if @lease.room
+      @lease.room_name = @lease.room.room_number + " (" + @lease.room.property.address + ")"
+    end
+    if @lease.agent
+      @lease.agent_name = @lease.agent.name
+    end
   end
 
   # POST /leases
@@ -82,6 +91,6 @@ class LeasesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lease_params
-      params.require(:lease).permit(:client_id, :rental_amount, :move_out, :date, :move_in, :welcome_home, :thank_you_sent, :dropped_date, :comments, :agent_id, :referral_amount, :property_id)
+      params.require(:lease).permit(:client_id, :client_name, :rental_amount, :move_out, :date, :move_in, :thank_you_sent, :comments, :agent_id, :agent_name, :referral_amount, :room_id, :room_name)
     end
 end

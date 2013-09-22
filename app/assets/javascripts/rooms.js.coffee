@@ -7,3 +7,8 @@ $ ->
         minLength: 0,
         select: (event, ui) -> $('#room_property_id').val(ui.item.id)
     }).focus -> $(this).autocomplete("search", @value)
+    $('#room_individual_name').autocomplete({
+        source: '/individuals/autocomplete',
+        minLength: 0,
+        select: (event, ui) -> $('#room_individual_id').val(ui.item.id)
+    }).focus -> $(this).autocomplete("search", @value)

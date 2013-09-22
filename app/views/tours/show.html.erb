@@ -20,16 +20,14 @@
 </p>
 
 <p>
-  <strong>Room:</strong>
-  <% if @tour.room %>
-  <%= link_to "#{@tour.room.room_number}", room_path(@tour.room) %>
-  <% end %>
+  <strong>Dropped date:</strong>
+  <%= @tour.dropped_date %>
 </p>
 
 <p>
   <strong>Property:</strong>
-  <% if @tour.property %>
-  <%= link_to "#{@tour.property.address}", property_path(@tour.property) %>
+  <% if @tour.room %>
+  <%= link_to "#{@tour.room.room_number} (#{@tour.room.property.address})", room_path(@tour.room) %>
   <% end %>
 </p>
 

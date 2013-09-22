@@ -22,6 +22,10 @@
 	<%= f.label :room_number, "Room Number: " %>
 	<%= f.text_field :room_number %>
   <br />
+    <%= f.label :individual, "Owner: "%>
+    <%= f.text_field :individual_name %>
+    <%= f.hidden_field :individual_id %>
+  <br />
     <%= f.label :comments, "Comments: " %>
     <%= f.text_area :comments %>
   <br />

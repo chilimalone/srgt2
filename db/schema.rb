@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130906162022) do
+ActiveRecord::Schema.define(version: 20130921234533) do
 
   create_table "agents", force: true do |t|
     t.string   "fname"
@@ -56,23 +56,20 @@ ActiveRecord::Schema.define(version: 20130906162022) do
   create_table "leases", force: true do |t|
     t.integer  "client_id"
     t.decimal  "rental_amount"
-    t.string   "move_out"
+    t.date     "move_out",        limit: 255
     t.string   "date"
     t.date     "move_in"
-    t.boolean  "welcome_home"
     t.boolean  "thank_you_sent"
-    t.date     "dropped_date"
     t.text     "comments"
     t.decimal  "referral_amount"
-    t.integer  "property_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "agent_id"
+    t.integer  "room_id"
   end
 
   add_index "leases", ["agent_id"], name: "index_leases_on_agent_id"
   add_index "leases", ["client_id"], name: "index_leases_on_client_id"
-  add_index "leases", ["property_id"], name: "index_leases_on_property_id"
 
   create_table "properties", force: true do |t|
     t.string   "street_1"
@@ -81,28 +78,26 @@ ActiveRecord::Schema.define(version: 20130906162022) do
     t.string   "state"
     t.string   "zip"
     t.text     "notes"
-    t.integer  "individual_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
-
-  add_index "properties", ["individual_id"], name: "index_properties_on_individual_id"
 
   create_table "rooms", force: true do |t|
     t.integer  "property_id"
     t.text     "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "room_number"
+    t.string   "room_number"
+    t.integer  "individual_id"
   end
 
   add_index "rooms", ["property_id"], name: "index_rooms_on_property_id"
 
   create_table "sales", force: true do |t|
     t.integer  "agent_id"
-    t.boolean  "hear"
+    t.string   "hear",          default: ""
     t.integer  "individual_id"
-    t.integer  "property_id"
     t.date     "closing_date"
     t.string   "company"
     t.string   "office_number"
@@ -110,24 +105,23 @@ ActiveRecord::Schema.define(version: 20130906162022) do
     t.datetime "updated_at"
     t.integer  "buyer_id"
     t.integer  "broker_id"
+    t.integer  "room_id"
   end
 
   add_index "sales", ["agent_id"], name: "index_sales_on_agent_id"
   add_index "sales", ["individual_id"], name: "index_sales_on_individual_id"
-  add_index "sales", ["property_id"], name: "index_sales_on_property_id"
 
   create_table "tenants", force: true do |t|
     t.integer  "individual_id"
     t.date     "leased_signed"
     t.date     "lease_expired"
-    t.integer  "property_id"
     t.integer  "room_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "welcome_home"
   end
 
   add_index "tenants", ["individual_id"], name: "index_tenants_on_individual_id"
-  add_index "tenants", ["property_id"], name: "index_tenants_on_property_id"
   add_index "tenants", ["room_id"], name: "index_tenants_on_room_id"
 
   create_table "tours", force: true do |t|
@@ -136,14 +130,13 @@ ActiveRecord::Schema.define(version: 20130906162022) do
     t.date     "date"
     t.integer  "room_id"
     t.text     "comments"
-    t.integer  "property_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "dropped_date"
   end
 
   add_index "tours", ["agent_id"], name: "index_tours_on_agent_id"
   add_index "tours", ["client_id"], name: "index_tours_on_client_id"
-  add_index "tours", ["property_id"], name: "index_tours_on_property_id"
   add_index "tours", ["room_id"], name: "index_tours_on_room_id"
 
 end

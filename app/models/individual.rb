@@ -1,7 +1,7 @@
 class Individual < ActiveRecord::Base
   has_one :client
   has_one :tenant
-  has_many :properties
+  has_many :rooms
   has_many :sales
   
   validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }

@@ -14,3 +14,19 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require turbolinks
+
+function remove_fields(link) {
+	$(link).prev("input[type=hidden]").val("1");
+	$(link).closest(".fields").remove();
+}
+
+function add_fields(link, index, association, content) {
+	$(link).parent().before(content);
+	$('#property_rooms_attributes_' + index + "_individual_name").autocomplete({
+        source: '/individuals/autocomplete',
+        minLength: 0,
+        select: function(event, ui) {
+			$('#property_rooms_attributes_' + index + '_individual_id').val(ui.item.id);
+		}
+    }).focus(function() { $(this).autocomplete("search", @value) })
+}

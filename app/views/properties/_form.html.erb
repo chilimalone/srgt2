@@ -13,16 +13,17 @@
       </ul>
     </div>
   <% end %>
-  <br />
-    <%= f.label :individual, "Contact: " %>
-    <%= f.text_field :individual_name %>
-    <%= f.hidden_field :individual_id %>
+  <br ?>
+    <%= f.label :name, "Property Name:" %>
+    <%= f.text_field :name %>
   <br />
     <%= f.label :street_1, "Street 1: " %>
     <%= f.text_field :street_1 %>
   <br />
-    <%= f.label :street_2, "Street 2: " %>
-    <%= f.text_field :street_2 %>
+    <%= f.fields_for :rooms do |room| %>
+      <%= render :partial => "room_fields", :locals => { :par => f, :f => room } %>
+    <% end %>
+    <span><%= link_to_add_fields "Add Unit", f, :rooms %></span>
   <br />
     <%= f.label :city, "City: " %>
     <%= f.text_field :city %>

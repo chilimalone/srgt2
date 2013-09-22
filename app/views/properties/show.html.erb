@@ -6,8 +6,11 @@
 </p>
 
 <p>
-  <strong>Street 2:</strong>
-  <%= @property.street_2 %>
+  <strong>Units (Street 2):</strong>
+  <% @property.rooms.each do |room| %>
+    <%= link_to room.room_number, room_path(room) %>
+    <br />
+  <% end %>
 </p>
 
 <p>
@@ -28,13 +31,6 @@
 <p>
   <strong>Notes:</strong>
   <%= @property.notes %>
-</p>
-
-<p>
-  <strong>Owner Contact:</strong>
-  <% if @property.individual %>
-  <%= link_to "#{@property.individual.name}", individual_path(@property.individual) %>
-  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_property_path(@property) %> |

@@ -30,14 +30,8 @@
     <%= f.label :date, "Date: " %>
     <%= f.text_field :date %>
   <br />
-    <%= f.label :welcome_home, "Welcome Home: " %>
-    <%= f.check_box :welcome_home %>
-  <br />
     <%= f.label :thank_you_sent, "Thank you sent: " %>
     <%= f.check_box :thank_you_sent %>
-  <br />
-    <%= f.label :dropped_date, "Dropped date: " %>
-    <%= f.date_select :dropped_date %>
   <br />
     <%= f.label :agent_name, "Agent: " %>
     <%= f.text_field :agent_name %>
@@ -46,9 +40,9 @@
     <%= f.label :referral_amount, "Referral Amount: " %>
     <%= f.text_field :referral_amount %>
   <br />
-    <%= f.label :property, "Property: " %>
-    <%= f.text_field :property_name %>
-    <%= f.hidden_field :property_id %>
+    <%= f.label :room, "Property: " %>
+    <%= f.text_field :room_name %>
+    <%= f.hidden_field :room_id %>
   <br />
     <%= f.label :comments %>
     <%= f.text_area :comments %>

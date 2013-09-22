@@ -17,17 +17,16 @@
   <%= @tenant.lease_expired %>
 </p>
 
+
 <p>
-  <strong>Property:</strong>
-  <% if @tenant.property %>
-  <%= link_to "#{@tenant.property.address}", property_path(@tenant.property) %>
-  <% end %>
+  <strong>Welcome home:</strong>
+  <%= @lease.welcome_home %>
 </p>
 
 <p>
-  <strong>Room:</strong>
+  <strong>Property:</strong>
   <% if @tenant.room %>
-  <%= link_to "#{@tenant.room.room_number}", property_path(@tenant.room) %>
+  <%= link_to "#{@tenant.room.room_number} (#{@tenant.room.property.address})", room_path(@tenant.room) %>
   <% end %>
 </p>
 

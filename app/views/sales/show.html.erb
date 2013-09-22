@@ -28,8 +28,8 @@
 
 <p>
   <strong>Property:</strong>
-  <% if @sale.property %>
-  <%= link_to "#{@sale.property.address}", property_path(@sale.property) %>
+  <% if @sale.room %>
+  <%= link_to "#{@sale.room.room_number} (#{@sale.room.property.address})", room_path(@sale.room) %>
   <% end %>
 </p>
 

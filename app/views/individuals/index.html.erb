@@ -18,6 +18,9 @@
         <td><%= link_to "#{individual.name}", individual %></td>
         <td>
 			<%= individual.street_1 %><br />
+			<% if not individual.street_2.blank? %>
+			  <%= individual.street_2 %><br />
+			<% end %>
 		    <%= individual.city %> <%= individual.state %> <%= individual.zip %>
 		</td>
         <td><%= individual.phone %></td>

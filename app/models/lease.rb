@@ -1,15 +1,15 @@
 class Lease < ActiveRecord::Base
   belongs_to :agent
   belongs_to :client
-  belongs_to :property
-  attr_accessor :agent_name, :client_name, :property_name
+  belongs_to :room
+  
+  attr_accessor :agent_name, :client_name, :room_name
   
   def search
     scope = Lease.scoped({})
     scope = scope.scoped :conditions => ["rental_amount = ", rental_amount] unless rental_amount.blank?
     scope = scope.scoped :conditions => ["move_out = ", move_out] unless move_out.blank?
     scope = scope.scoped :conditions => ["move_in =", move_in] unless move_in.blank?
-    scope = scope.scoped :conditions => ["dropped_date =", dropped_date] unless dropped_date.blank?
     scope = scope.scoped :conditions => ["referral amount =", referral_amount] unless referral_amount.blank?
     if (!client.blank?)
       possible_people = client.search
@@ -21,10 +21,10 @@ class Lease < ActiveRecord::Base
       condition_a = possible_agents.map { |p| p.to_s }.join("', '")
       scope = scope.scoped :conditions => ["agent_id IN ?", "['" + condition_a + "']"]
     end
-    if (!property.blank?)
-      possible_properties = property.search
+    if (!room.blank?)
+      possible_properties = room.search
       condition_p = possible_properties.map { |p| p.to_s }.join("', '")
-      scope = scope.scoped :conditions => ["property_id IN ?", "['" + condition_p + "']"]
+      scope = scope.scoped :conditions => ["room_id IN ?", "['" + condition_p + "']"]
     end
     scope
   end

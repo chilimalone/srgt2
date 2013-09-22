@@ -17,9 +17,12 @@
     <% @leases.each do |lease| %>
       <tr>
         <td><% if lease.client %><%= link_to "#{lease.client.name}", lease %><% end %></td>
-        <td><% if lease.property %>
-            <%= lease.property.street_1 %><br />
-			<%= lease.property.city %> <%= lease.property.state %> <%= lease.property.zip %>
+        <td><% if lease.room %>
+            <%= lease.room.property.street_1 %><br />
+            <% if not lease.room.room_number.blank? %>
+              <%= lease.room.room_number %><br />
+            <% end %>
+			<%= lease.room.property.city %> <%= lease.room.property.state %> <%= lease.room.property.zip %>
 			<% end %></td>
         <td><%= lease.move_in %></td>
         <td><%= lease.move_out %></td>

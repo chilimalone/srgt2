@@ -4,6 +4,9 @@
   <%= f.label :comments %>
   <%= f.text_area :comments %>
 <br />
+  <%= f.label :dropped_date, "Dropped date: " %>
+  <%= f.date_select :dropped_date, :include_blank => true %>
+<br />
 <button id="tours_agent_filter_button" type='button'>Filter by Agents</button>
 <div class="subfields" id="tours_agent_filter">
 Agent filter: <br />

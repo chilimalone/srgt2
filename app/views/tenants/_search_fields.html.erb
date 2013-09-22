@@ -4,6 +4,9 @@
   <%= f.label :lease_expired, "Lease Expired: " %>
   <%= f.date_select :lease_expired, :include_blank => true %>
 <br />
+  <%= f.label :welcome_home, "Welcome home: " %>
+  <%= f.check_box :welcome_home %>
+<br />
 <button id="tenants_contact_filter_button" type='button'>Filter by Contacts</button>
 <div class="subfields" id='tenants_contact_filter'>
 Contact filter <br />

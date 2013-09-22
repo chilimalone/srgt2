@@ -20,6 +20,10 @@ class RoomsController < ApplicationController
 
   # GET /rooms/1/edit
   def edit
+    @room.property_name = "#{@room.property.name} #{@room.property.address}"
+    if @room.individual
+      @room.individual_name = @room.individual.name
+    end
   end
 
   # POST /rooms
@@ -75,14 +79,12 @@ class RoomsController < ApplicationController
   end
   
   def auto_rooms
-    if !params[:prop_id].blank?
-      users = Property.find(params[:prop_id]).rooms
-    elsif !params[:term].blank?
+    if !params[:term].blank?
       users = Room.search_by_number(params[:term])
     else
       users = Room.all
     end
-    list = users.map {|u| Hash[id: u.id, label: u.room_number.to_s + " (" + u.property.address + ")", name: u.property.address]}
+    list = users.map {|u| Hash[id: u.id, label: u.room_number + " (" + u.property.address + ")", name: u.property.address]}
     respond_to do |format|
       format.json { render json: list }
     end
@@ -96,6 +98,6 @@ class RoomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params.require(:room).permit(:property_id, :comments)
+      params.require(:room).permit(:property_id, :property_name, :comments, :individual_id, :individual_name)
     end
 end

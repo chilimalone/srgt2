@@ -16,6 +16,8 @@ class PropertiesController < ApplicationController
   # GET /properties/new
   def new
     @property = Property.new
+    room = @property.rooms.build
+    room.room_number = " "
   end
 
   # GET /properties/1/edit
@@ -80,7 +82,7 @@ class PropertiesController < ApplicationController
     else
       users = Property.all
     end
-    list = users.map {|u| Hash[id: u.id, label: u.address, name: u.address]}
+    list = users.map {|u| Hash[id: u.id, label: "#{u.name} #{u.address}", name: u.address]}
     respond_to do |format|
       format.json { render json: list }
     end
@@ -94,6 +96,6 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-      params.require(:property).permit(:street_1, :street_2, :city, :state, :zip, :notes, :individual_id)
+      params.require(:property).permit(:name, :street_1, :street_2, :city, :state, :zip, :notes, rooms_attributes: [:id, :room_number, :individual_id, :_destroy])
     end
 end

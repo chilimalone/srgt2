@@ -20,6 +20,9 @@ class ToursController < ApplicationController
 
   # GET /tours/1/edit
   def edit
+    if @tour.room
+      @tour.room_name = @tour.room.room_number + " (#{@tour.room.property.address})"
+    end
   end
 
   # POST /tours
@@ -82,6 +85,6 @@ class ToursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tour_params
-      params.require(:tour).permit(:agent_id, :client_id, :date, :room_id, :comments, :property_id)
+      params.require(:tour).permit(:agent_id, :client_id, :date, :room_id, :room_name, :comments, :dropped_date)
     end
 end

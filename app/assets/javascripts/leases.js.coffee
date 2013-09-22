@@ -12,8 +12,8 @@ $ ->
 	    minLength: 0,
 	    select: (event, ui) -> $('#lease_client_id').val(ui.item.id)
     }).focus -> $(this).autocomplete("search", @value)
-    $('#lease_property_name').autocomplete({
-	    source: '/properties/autocomplete',
+    $('#lease_room_name').autocomplete({
+	    source: '/room/autocomplete',
 	    minLength: 0,
-	    select: (event, ui) -> $('#lease_property_id').val(ui.item.id)
+	    select: (event, ui) -> $('#lease_room_id').val(ui.item.id)
     }).focus -> $(this).autocomplete("search", @value)

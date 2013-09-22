@@ -20,6 +20,18 @@ class SalesController < ApplicationController
 
   # GET /sales/1/edit
   def edit
+    if @sale.agent
+      @sale.agent_name = @sale.agent.name
+    end
+    if @sale.room
+      @sale.room_name = @sale.room.room_number + " (#{@sale.room.property.address})"
+    end
+    if @sale.buyer
+      @sale.buyer_name = @sale.buyer.name
+    end
+    if @sale.broker
+      @sale.broker_name = @sale.broker.name
+    end
   end
 
   # POST /sales
@@ -82,6 +94,6 @@ class SalesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_params
-      params.require(:sale).permit(:agent_id, :hear, :buyer_id, :broker_id, :property_id, :closing_date, :company, :office_number)
+      params.require(:sale).permit(:agent_id, :agent_name, :hear, :buyer_id, :buyer_name, :broker_id, :broker_name, :room_id, :room_name :closing_date, :company, :office_number)
     end
 end

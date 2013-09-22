@@ -28,18 +28,8 @@
 </p>
 
 <p>
-  <strong>Welcome home:</strong>
-  <%= @lease.welcome_home %>
-</p>
-
-<p>
   <strong>Thank you sent:</strong>
   <%= @lease.thank_you_sent %>
-</p>
-
-<p>
-  <strong>Dropped date:</strong>
-  <%= @lease.dropped_date %>
 </p>
 
 <p>
@@ -61,8 +51,8 @@
 
 <p>
   <strong>Property:</strong>
-  <% if @lease.property %>
-  <%= link_to "#{@lease.property.address}", property_path(@lease.property) %>
+  <% if @lease.room %>
+  <%= link_to "#{@lease.room.room_number} (#{@lease.room.property.address})", room_path(@lease.room) %>
   <% end %>
 </p>
 

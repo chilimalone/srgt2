@@ -20,6 +20,9 @@ class ClientsController < ApplicationController
 
   # GET /clients/1/edit
   def edit
+    if @client.individual
+      @client.individual_name = @client.individual.name
+    end
   end
 
   # POST /clients

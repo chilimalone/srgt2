@@ -11,14 +11,8 @@
   <%= f.label :date, "Date: " %>
   <%= f.text_field :date, :include_blank => true %>
 <br />
-  <%= f.label :welcome_home, "Welcome Home: " %>
-  <%= f.check_box :welcome_home %>
-<br />
   <%= f.label :thank_you_sent, "Thank you sent: " %>
   <%= f.check_box :thank_you_sent %>
-<br />
-  <%= f.label :dropped_date, "Dropped date: " %>
-  <%= f.date_select :dropped_date, :include_blank => true %>
 <br />
   <%= f.label :referral_amount, "Referral Amount: " %>
   <%= f.text_field :referral_amount %>
@@ -45,8 +39,8 @@ Agent filter: <br />
 <button id="leases_property_filter_button" type='button'>Filter by Property</button>
 <div class="subfields" id="leases_property_filter">
 Property filter: <br />
-  <%= f.fields_for :property do |pr| %>
- 	<%= render :partial => '/properties/search_fields', :locals => { :f => pr } %>
+  <%= f.fields_for :room do |pr| %>
+ 	<%= render :partial => '/room/search_fields', :locals => { :f => pr } %>
   <% end %>
 </div>
 <script>

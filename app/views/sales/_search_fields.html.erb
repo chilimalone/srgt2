@@ -1,5 +1,5 @@
   <%= f.label :hear, "Hear: " %>
-  <%= f.check_box :hear %>
+  <%= f.text_field :hear %>
 <br />
   <%= f.label :property, "Property: " %>
   <%= f.collection_select(:property_id, Property.all, :id, :address) %>
@@ -40,8 +40,8 @@ Agent filter: <br />
 <button id="sales_property_filter_button" type='button'>Filter by Property</button>
 <div class="subfields" id="sales_property_filter">
 Property filter: <br />
-  <%= f.fields_for :property do |pr| %>
-	<%= render :partial => '/properties/search_fields', :locals => { :f => pr } %>
+  <%= f.fields_for :room do |pr| %>
+	<%= render :partial => '/rooms/search_fields', :locals => { :f => pr } %>
   <% end %>
 </div>
 <script>

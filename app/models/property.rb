@@ -1,11 +1,7 @@
 class Property < ActiveRecord::Base
-  belongs_to :individual
   has_many :rooms
-  has_many :leases
-  has_many :tenants
-  has_many :tours
-  has_many :sales
-  attr_accessor :individual_name
+  
+  accepts_nested_attributes_for :rooms, :reject_if => lambda { |a| a[:room_number].empty? }, :allow_destroy => true
   
   def address
     "#{street_1} #{city} #{state}"
@@ -18,8 +14,8 @@ class Property < ActiveRecord::Base
   
   def search
     scope = Property.scoped({})
+    scope = scope.scoped :conditions => ["name LIKE ?", "%" + name + "%"] unless name.blank?
     scope = scope.scoped :conditions => ["street_1 LIKE ?", "%" + street_1 + "%"] unless street_1.blank?
-    scope = scope.scoped :conditions => ["street_2 LIKE ?", "%" + street_2 + "%"] unless street_2.blank?
     scope = scope.scoped :conditions => ["city LIKE ?", "%" + city + "%"] unless city.blank?
     scope = scope.scoped :conditions => ["state LIKE ?", "%" + state + "%"] unless state.blank?
     scope = scope.scoped :conditions => ["zip LIKE ?", "%" + zip + "%"] unless zip.blank?

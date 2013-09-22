@@ -1,0 +1,10 @@
+<span class="fields">
+    <%= f.label :room_number, "Street 2: " %>
+    <%= f.text_field :room_number %>
+    <br />
+    <%= f.label :individual, "Owner: "%>
+    <%= f.text_field :individual_name, class: "indv" %>
+    <%= f.hidden_field :individual_id, class: "indvi" %>
+    <%= link_to_remove_fields("remove", f, par) %>
+    <br />
+</span>
