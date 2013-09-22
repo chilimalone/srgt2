@@ -344,6 +344,13 @@ code, pre        { background-color:#FF9; padding:2px 0px; margin:4px 25px; font
     user-select:none;
 }
 
+.fields {
+	border: solid 1px #333;
+	padding-top: 5px;
+	padding-left: 5px;
+	margin-bottom: 2px;
+}
+
 .fixedNav {
 	position: fixed;
 	float: left;

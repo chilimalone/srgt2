@@ -21,7 +21,7 @@
     <%= f.text_field :street_1 %>
   <br />
     <%= f.fields_for :rooms do |room| %>
-      <%= render :partial => "room_fields", :locals => { :par => f, :f => room } %>
+      <%= render :partial => "room_fields", :locals => { :par => f.object.rooms.size, :f => room } %>
     <% end %>
     <span><%= link_to_add_fields "Add Unit", f, :rooms %></span>
   <br />
