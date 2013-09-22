@@ -74,6 +74,9 @@ class LeasesController < ApplicationController
   # PUTS /leases/search
   def search
     @lease = Lease.new(lease_params)
+    @lease.client = createClient(params[:lease])
+    @lease.agent = createAgent(params[:lease])
+    @lease.room = createRoom(params[:lease])
     @leases = @lease.search
     render "index"
   end

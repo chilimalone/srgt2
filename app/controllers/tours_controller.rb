@@ -23,6 +23,12 @@ class ToursController < ApplicationController
     if @tour.room
       @tour.room_name = @tour.room.room_number + " (#{@tour.room.property.address})"
     end
+    if @tour.agent
+      @tour.agent_name = @tour.agent.name
+    end
+    if @tour.client
+      @tour.client_name = @tour.client.name
+    end
   end
 
   # POST /tours
@@ -68,6 +74,8 @@ class ToursController < ApplicationController
   # PUTS /tours/search
   def search
     @tour = Tour.new(tour_params)
+    @tour.agent = createAgent(params[:tour])
+    @tour.room = createRoom(params[:tour])
     @tours = @tour.search
     render "index"
   end

@@ -40,7 +40,7 @@ Agent filter: <br />
 <div class="subfields" id="leases_property_filter">
 Property filter: <br />
   <%= f.fields_for :room do |pr| %>
- 	<%= render :partial => '/room/search_fields', :locals => { :f => pr } %>
+ 	<%= render :partial => '/rooms/search_fields', :locals => { :f => pr } %>
   <% end %>
 </div>
 <script>

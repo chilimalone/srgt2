@@ -15,8 +15,8 @@ class Client < ActiveRecord::Base
   def self.search_by_name(name)
     name_condition = name + "%"
     possible_people = Individual.search_by_name(name)
-    condition = possible_people.map { |p| p.to_s }.join("', '")
-    find(:all, :conditions => ["individual_id IN ? OR company LIKE ?", "['" + condition + "']", name_condition])
+    condition = possible_people.map { |p| p.id.to_s }.join("', '")
+    find(:all, :conditions => ["individual_id IN ('#{condition}') OR company LIKE ?", name_condition])
   end
   
   def search
@@ -28,8 +28,8 @@ class Client < ActiveRecord::Base
     scope = scope.scoped :conditions => ["date_received = ?", "'" + date_received.to_s + "'"] unless date_received.blank?
     if (!individual.blank?)
       possible_people = individual.search
-      condition = possible_people.map { |p| p.to_s }.join("', '")
-      scope = scope.scoped :conditions => ["individual_id IN ?", "['" + condition + "']"]
+      condition = possible_people.map { |p| p.id.to_s }.join("', '")
+      scope = scope.scoped :conditions => ["individual_id IN ('" + condition + "')"]
     end
     scope
   end

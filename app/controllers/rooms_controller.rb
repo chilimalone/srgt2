@@ -68,7 +68,7 @@ class RoomsController < ApplicationController
   
   # PUTS /rooms/search
   def search
-    @room = Room.new(room_params)
+    @room = createRoom(params)
     @rooms = @room.search
     render "index"
   end

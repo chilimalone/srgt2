@@ -15,8 +15,8 @@ Property filter: <br />
 <button id="rooms_individual_filter_button" type='button'>Filter by Owner</button>
 <div class="subfields" id="rooms_individual_filter">
 Owner filter: <br />
-  <%= f.fields_for :individual do |i| %>
-    <%= render :partial => '/individual/search_fields', :locals => { :f => i } %>
+  <%= f.fields_for :individual do |ind| %>
+  	<%= render :partial => '/individuals/fields', :locals => { :f => ind } %>
   <% end %>
 </div>
 <script>

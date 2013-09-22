@@ -71,6 +71,7 @@ class TenantsController < ApplicationController
   # PUTS /tenants/search
   def search
     @tenant = Tenant.new(tenant_params)
+    @tenant.individual = createIndividual(params[:tenant])
     @tenants = @tenant.search
     render "index"
   end

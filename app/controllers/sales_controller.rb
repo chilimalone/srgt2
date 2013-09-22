@@ -77,6 +77,10 @@ class SalesController < ApplicationController
   # PUTS /sales/search
   def search
     @sale = Sale.new(sale_params)
+    @sale.agent = createAgent(params[:sale])
+    @sale.buyer = Individual.new(individuals_params(params[:sale][:buyer]))
+    @sale.broker = Individual.new(individuals_params(params[:sale][:broker]))
+    @sale.room = createRoom(params[:sale])
     @sales = @sale.search
     render "index"
   end
@@ -94,6 +98,6 @@ class SalesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_params
-      params.require(:sale).permit(:agent_id, :agent_name, :hear, :buyer_id, :buyer_name, :broker_id, :broker_name, :room_id, :room_name :closing_date, :company, :office_number)
+      params.require(:sale).permit(:agent_id, :agent_name, :hear, :buyer_id, :buyer_name, :broker_id, :broker_name, :room_id, :room_name, :closing_date, :company, :office_number)
     end
 end

@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Property Name</th>
       <th>Address</th>
       <th>Units</th>
       <th></th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @properties.each do |property| %>
       <tr>
+        <td><%= property.name %></td>
         <td>
 			<%= property.street_1 %><br />
         	<%= property.city %> <%= property.state %> <%= property.zip %>

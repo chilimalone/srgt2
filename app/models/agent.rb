@@ -1,10 +1,10 @@
 class Agent < ActiveRecord::Base
-  attr_accessor :password, :password_confirmation, :old_password, :tmp_name
+  attr_accessor :password, :password_confirmation, :old_password, :tmp_name, :req_password
   before_save :encrypt_password, :standardize
   
-  validates_confirmation_of :password
+  validates_confirmation_of :password, if: :req_password
   validates :username, uniqueness: true, presence: true
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, if: :req_password
   
   def self.authenticate(username, password)
     user = find_by_username(username.downcase)

@@ -22,6 +22,11 @@ class PropertiesController < ApplicationController
 
   # GET /properties/1/edit
   def edit
+    @property.rooms.each do |rm|
+      if rm.individual
+        rm.individual_name = rm.individual.name
+      end
+    end
   end
 
   # POST /properties

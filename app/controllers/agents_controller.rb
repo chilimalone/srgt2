@@ -61,8 +61,10 @@ class AgentsController < ApplicationController
   # PATCH/PUT /agents/1
   # PATCH/PUT /agents/1.json
   def update
+    @agent.req_password = true
     if current_agent.isAdmin
       temp_agent = Agent.new
+      @agent.req_password = false
     else
       temp_agent = Agent.authenticate(@agent.username, params[:agent][:old_password])
       if temp_agent.nil?
@@ -71,7 +73,7 @@ class AgentsController < ApplicationController
     end
     # Make sure validation passes if password is not updated.
     if params[:agent][:password].blank? && params[:agent][:password_confirmation].blank?
-      params[:agent][:password] = params[:agent][:password_confirmation] = params[:agent][:old_password]
+      @agent.req_password = false
     end
     respond_to do |format|
       if ((!temp_agent.nil?) && @agent.update(agent_params))
@@ -126,6 +128,6 @@ class AgentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def agent_params
-      params.require(:agent).permit(:fname, :lname, :username, :password, :password_confirmation, :old_password, :isAdmin)
+      params.require(:agent).permit(:fname, :lname, :username, :password, :password_confirmation, :old_password, :req_password, :isAdmin)
     end
 end

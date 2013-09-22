@@ -1,9 +1,6 @@
   <%= f.label :hear, "Hear: " %>
   <%= f.text_field :hear %>
 <br />
-  <%= f.label :property, "Property: " %>
-  <%= f.collection_select(:property_id, Property.all, :id, :address) %>
-<br />
   <%= f.label :closing_date, "Closing date: " %>
   <%= f.date_select :closing_date %>
 <br />

@@ -9,8 +9,8 @@ class Room < ActiveRecord::Base
   
   def self.search_by_number(num)
     possible_properties = Property.search_by_address(num)
-    posquery = possible_properties.map { |p| p.to_s }.join("', '")
-    find(:all, :conditions => ["room_number LIKE ? OR property_id IN ?", "%#{num}%", "['#{posquery}']"])
+    posquery = possible_properties.map { |p| p.id.to_s }.join("', '")
+    find(:all, :conditions => ["room_number LIKE ? OR property_id IN ('#{posquery}')", "%#{num}%"])
   end
   
   def search
@@ -18,8 +18,13 @@ class Room < ActiveRecord::Base
     scope = scope.scoped :conditions => ["room_number LIKE ?", room_number] unless room_number.blank?
     if (!property.blank?)
       possible_properties = property.search
-      condition_p = possible_properties.map { |p| p.to_s }.join("', '")
-      scope = scope.scoped :conditions => ["property_id IN ?", "['" + condition_p + "']"]
+      condition_p = possible_properties.map { |p| p.id.to_s }.join("', '")
+      scope = scope.scoped :conditions => ["property_id IN ('" + condition_p + "')"]
+    end
+    if (!individual.blank?)
+      possible_people = individual.search
+      condition = possible_people.map { |p| p.id.to_s }.join("', '")
+      scope = scope.scoped :conditions => ["individual_id IN ('" + condition + "')"]
     end
     scope
   end

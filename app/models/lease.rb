@@ -13,18 +13,18 @@ class Lease < ActiveRecord::Base
     scope = scope.scoped :conditions => ["referral amount =", referral_amount] unless referral_amount.blank?
     if (!client.blank?)
       possible_people = client.search
-      condition_c = possible_people.map { |p| p.to_s }.join("', '")
-      scope = scope.scoped :conditions => ["client_id IN ?", "['" + condition_c + "']"]
+      condition_c = possible_people.map { |p| p.id.to_s }.join("', '")
+      scope = scope.scoped :conditions => ["client_id IN ('" + condition_c + "')"]
     end
     if (!agent.blank?)
       possible_agents = agent.search
-      condition_a = possible_agents.map { |p| p.to_s }.join("', '")
-      scope = scope.scoped :conditions => ["agent_id IN ?", "['" + condition_a + "']"]
+      condition_a = possible_agents.map { |p| p.id.to_s }.join("', '")
+      scope = scope.scoped :conditions => ["agent_id IN ('" + condition_a + "')"]
     end
     if (!room.blank?)
       possible_properties = room.search
-      condition_p = possible_properties.map { |p| p.to_s }.join("', '")
-      scope = scope.scoped :conditions => ["room_id IN ?", "['" + condition_p + "']"]
+      condition_p = possible_properties.map { |p| p.id.to_s }.join("', '")
+      scope = scope.scoped :conditions => ["room_id IN ('" + condition_p + "')"]
     end
     scope
   end

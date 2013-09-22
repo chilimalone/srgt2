@@ -10,7 +10,6 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
 //= require jquery-ui
 //= require jquery_ujs
 //= require turbolinks
@@ -28,5 +27,7 @@ function add_fields(link, index, association, content) {
         select: function(event, ui) {
 			$('#property_rooms_attributes_' + index + '_individual_id').val(ui.item.id);
 		}
-    }).focus(function() { $(this).autocomplete("search", @value) })
+    }).focus(function() {
+		$(this).autocomplete("search", this.value);
+	});
 }

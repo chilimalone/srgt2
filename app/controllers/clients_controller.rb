@@ -67,7 +67,7 @@ class ClientsController < ApplicationController
   
   # PUTS /clients/search
   def search
-    @client = Client.new(client_params)
+    @client = createClient(params)
     @clients = @client.search
     render "index"
   end
@@ -97,6 +97,10 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:comments, :file_number, :source, :company, :date_received, :confirmed, :comments, :individual_id)
+      params.require(:client).permit(:comments, :file_number, :source, :company, :date_received, :confirmed, :comments, :individual_id, :individual_name)
+    end
+    
+    def individual_params
+      params[:client][:individual].permit(:fname, :lname, :phone, :street_1, :street_2, :city, :state, :zip, :email)
     end
 end
