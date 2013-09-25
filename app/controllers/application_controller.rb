@@ -20,10 +20,10 @@ class ApplicationController < ActionController::Base
   def createClient(params)
     params[:client] = check_params(params[:client])
     return nil if params[:client].blank?
-    ci = clients_params(params[:client])
+    ci = Client.new(clients_params(params[:client]))
     ci.individual = nil
-    ci.individual = individuals_params(params[:client][:individual]) unless params[:client][:individual].blank?
-    return cl
+    ci.individual = Individual.new(individuals_params(params[:client][:individual])) unless params[:client][:individual].blank?
+    return ci
   end
   
   def createRoom(params)
@@ -54,7 +54,7 @@ class ApplicationController < ActionController::Base
       if v.is_a?(Hash)
         v = check_params(v)
       end
-      param_array[k] = nil if v.blank?
+      param_array[k] = {} if v.blank?
     end
     return param_array
   end
@@ -76,6 +76,6 @@ class ApplicationController < ActionController::Base
   end
   
   def rooms_params(param_array)
-    param_array.permit(:property_id, :property_name, :comments, :individual_id, :individual_name)
+    param_array.permit(:property_id, :property_name, :comments, :individual_id, :individual_name, :room_number)
   end
 end

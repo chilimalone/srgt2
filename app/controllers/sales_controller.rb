@@ -78,10 +78,10 @@ class SalesController < ApplicationController
   def search
     @sale = Sale.new(sale_params)
     @sale.agent = createAgent(params[:sale])
-    buy = Individual.new(individuals_params(params[:sale][:buyer]))
-    @sale.buyer = buy unless buy.identical? Individual.new
-    broker = Individual.new(individuals_params(params[:sale][:broker]))
-    @sale.broker = broker unless broker.identical? Individual.new
+    params[:sale][:buyer] = check_params(params[:sale][:buyer])
+    @sale.buyer = Individual.new(individuals_params(params[:sale][:buyer])) unless params[:sale][:buyer].blank?
+    params[:sale][:broker] = check_params(params[:sale][:broker])
+    @sale.broker = Individual.new(individuals_params(params[:sale][:broker])) unless params[:sale][:broker].blank?
     @sale.room = createRoom(params[:sale])
     @sales = @sale.search
     render "index"
